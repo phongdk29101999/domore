@@ -9,7 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+<<<<<<< HEAD
     <title>DOMORE Admin - Dashboard</title>
+=======
+    <title>HEDBLO Admin - Dashboard</title>
+>>>>>>> c7e2262... Init project
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
