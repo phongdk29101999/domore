@@ -11,7 +11,7 @@
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
                             <h1 data-animation="bounceIn" data-delay="0.2s">あなたの質問 </h1>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -47,13 +47,13 @@
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
-                   
+
 
 
                     <div class="col-12">
                         <select class="form-select form-select-lg" aria-label=".form-select-lg example">
                         <option selected>科目</option>
-                        @foreach($tags as $tag)  
+                        @foreach($tags as $tag)
                             <option value="{{$tag->tag_id}}">{{$tag->tag_title}}</option>
                         @endforeach
                         </select>

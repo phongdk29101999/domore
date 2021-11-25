@@ -26,6 +26,14 @@ cp domore-cli.example domore-cli && sudo chmod +x domore-cli
 ```
 docker-compose build && docker-compose up -d
 ```
+<<<<<<< HEAD
+=======
+## Import sql file
+> Download .sql file from [shared driver file](https://drive.google.com/file/d/1u7iDaLYDREO1Hx3ijMrKX_6pfI66jlIB/view?usp=sharing)
+```
+./domore-cli load:db -f [sql-file-path]
+```
+>>>>>>> c7e2262 (Init project)
 ## Load environment file
 ```
 ./domore-cli load:env
