@@ -26,10 +26,9 @@ cp domore-cli.example domore-cli && sudo chmod +x domore-cli
 ```
 docker-compose build && docker-compose up -d
 ```
-## Import sql file
-> Download .sql file from [shared driver file](https://drive.google.com/file/d/1u7iDaLYDREO1Hx3ijMrKX_6pfI66jlIB/view?usp=sharing)
+## Migration
 ```
-./domore-cli load:db -f [sql-file-path]
+docker-compose exec app php artisan migrate
 ```
 ## Load environment file
 ```
