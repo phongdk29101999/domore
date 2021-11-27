@@ -38,7 +38,7 @@
     </div>
 </div>
 <!-- Preloader Start-->
-<main class="login-body" data-vide-bg="{{asset('/user/img/login-bg.mp4')}}">
+<main class="login-body">
     @yield('content')
 </main>
 
