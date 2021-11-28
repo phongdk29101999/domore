@@ -25,7 +25,7 @@ php/local.ini
 nginx/conf.d/app.conf
 mysql/my.cnf
 init.sh
-kiddihub-cli
+domore-cli
 *.sql
 env.txt
 .DS_Store
