@@ -7,14 +7,12 @@
         @csrf
         <div class="login-form">
             <!-- logo-login -->
-            <div class="logo-login">
-                <a href="/"><img src="{{ asset('/user/img/logo/loder.png') }}" alt=""></a>
-            </div>
-            <h2>Login Here</h2>
+            <h2>ログイン</h2>
+            <p class="text">まだアカウントを持っていません?<br> <a href="{{ URL::to('/register') }}"><u>サインアップ</u></a></p>
             <div class="form-input">
                 <label for="email">E-Mail Address</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                    placeholder="Input your email" required autocomplete="email" autofocus>
+                placeholder="メールアドレス" required autocomplete="email" autofocus>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -25,7 +23,7 @@
             <div class="form-input">
                 <label for="password">Password</label>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" placeholder="Input your password" required autocomplete="current-password">
+                    name="password" placeholder="パスワード" required autocomplete="current-password">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -33,12 +31,11 @@
                 @enderror
             </div>
             <div class="form-input pt-30">
-                <input type="submit" name="submit" value="login">
+                <input type="submit" name="submit" value="ログイン">
             </div>
             <!-- Forget Password -->
             {{-- <a href="#" class="forget">Forget Password</a> --}}
             <!-- Forget Password -->
-            <a href="{{ URL::to('/register') }}" class="registration">Registration</a>
         </div>
     </form>
     <!-- /end login form -->
