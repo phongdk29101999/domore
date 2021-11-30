@@ -34,11 +34,13 @@
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-xs-12">
+                                    <!-- PAGE CONTENT BEGINS -->
+                                    <div class="hr dotted"></div>
                                     <div>
-                                        <div >
-                                            <div >
+                                        <div id="user-profile-3" class="user-profile row">
+                                            <div class="col-sm-offset-1 col-sm-10">
                                                 <div class="space"></div>
-                                                <form  action="update" method="POST"
+                                                <form class="form-horizontal" action="update" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="tabbable">
@@ -277,5 +279,4 @@
             </div><!-- /.main-container -->
         </main>
     </section>
-
 @endsection
