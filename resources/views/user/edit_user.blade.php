@@ -34,17 +34,15 @@
                         <div class="page-content">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <!-- PAGE CONTENT BEGINS -->
-                                    <div class="hr dotted"></div>
                                     <div>
-                                        <div id="user-profile-3" class="user-profile row">
-                                            <div class="col-sm-offset-1 col-sm-10">
+                                        <div >
+                                            <div >
                                                 <div class="space"></div>
-                                                <form class="form-horizontal" action="update" method="POST"
+                                                <form  action="update" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="tabbable">
-                                                        <div class="tab-content profile-edit-tab-content">
+                                                        <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);">
                                                             <div id="edit-basic" class="tab-pane in active">
                                                                 <h4 class="header blue bolder smaller">General</h4>
 
@@ -58,7 +56,7 @@
                                                                             class="vspace-12-sm"></div>
                                                                         --}}
                                                                     @else
-                                                                    <div class="block-ava">
+                                                                    <div class="block-ava rounded">
                                                                         <img src="{{asset('/user/img/default_avt.jpg')}}">
                                                                     </div>
                                                                     @endif
@@ -251,7 +249,7 @@
 
 
 
-                                                                <div class="clearfix form-actions">
+                                                                <div class="clearfix form-actions" style="background-color: rgb(220 220 220);">
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <button class="btn btn-info" type="submit">
                                                                             <i class="ace-icon fa fa-check bigger-110"></i>
@@ -279,4 +277,5 @@
             </div><!-- /.main-container -->
         </main>
     </section>
+
 @endsection
