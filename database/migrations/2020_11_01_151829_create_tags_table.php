@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('tag_id');
-            $table->string('tag_title')->unique();
+            $table->string('tag_title');
         });
     }
 
