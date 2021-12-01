@@ -1,6 +1,9 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -18,7 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
             'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
-            'email' => 'test1@gmail.com',
+            'email' => 'test1@example.com',
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
@@ -30,36 +33,23 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
             'gender' => 'female',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
-            'email' => 'test2@gmail.com',
+            'email' => 'test2@example.com',
             'phone' => '0123456789',
             'address' => Str::random(20),
             'job' => Str::random(10),
         ]);
         DB::table('users')->insert([
-            'first_name' => 'Thanh',
-            'last_name' => 'Nguyen',
+            'first_name' => 'Phong',
+            'last_name' => 'Kim',
             'user_name' => 'admin ',
             'password' => Hash::make('123456'),
-            'gender' => 'female',
+            'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
-            'email' => 'nuhoangchenhac@gmail.com',
-            'phone' => '0123456789',
+            'email' => 'phong.dk176843@sis.hust.edu.vn',
+            'phone' => '0941067198',
             'address' => Str::random(20),
             'job' => Str::random(10),
             'admin' => 1,
         ]);
-        DB::table('users')->insert([
-            'first_name' => 'Dang Nam',
-            'last_name' => 'Kieu',
-            'user_name' => 'dangnam739',
-            'password' => Hash::make('12345678'),
-            'gender' => 'female',
-            'birthday' => date('Y-m-d H:i:s', mt_rand(1, 2147385600)),
-            'email' => 'kieudangnam@gmail.com',
-            'phone' => '0123456789',
-            'address' => Str::random(20),
-            'job' => Str::random(10),
-        ]);
-
     }
 }
