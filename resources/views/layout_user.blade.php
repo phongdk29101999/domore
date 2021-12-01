@@ -174,7 +174,7 @@
     <main>
         @yield('content')
     </main>
-    <footer>
+    {{-- <footer>
         <div class="footer-wrappper footer-bg">
             <!-- Footer Start-->
             <div class="footer-area footer-padding">
@@ -268,7 +268,7 @@
             </div>
             <!-- Footer End-->
         </div>
-    </footer>
+    </footer> --}}
     <!-- Scroll Up -->
     <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
