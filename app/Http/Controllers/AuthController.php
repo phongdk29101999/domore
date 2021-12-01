@@ -26,6 +26,8 @@ class AuthController extends Controller
         return view('user_profile');
     }
 
+    
+
     public function change_pass(Request $request){
         return view('user.change_pass');
     }

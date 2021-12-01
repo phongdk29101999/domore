@@ -1,7 +1,16 @@
 @extends('layout_user')
 @section('content')
 
-
+<style>
+.center {
+    margin: 0 auto; /* Căn giữa block element */
+    width: 60%; /* Phải thiết lập width */
+    background: lightpink;
+    padding: 5px;
+    border-radius: 10px;
+    word-wrap:break-word;
+}
+</style>
     <!--? slider Area Start-->
     <section class="slider-area slider-area2">
         <div class="slider-active">
@@ -29,7 +38,6 @@
             </div>
         </div>
     </section>
-
     <!-- Courses area start -->
     <div class="main-container ace-save-state" id="main-container">
         <div class="main-content">
@@ -72,10 +80,10 @@
                                
                                                                     <div class="form-group col-sm-4 control-label" >
                                                                         <div class="d-flex flex-row justify-content-between mt-4 pr-4">
-                                                                            <div class="d-flex flex-column align-items-center" style="text-align: left;color: #8B0000">メッセージ
+                                                                            <div class="d-flex flex-column align-items-center" style="text-align: left;color: #8B0000">ポスト
                                                                                 <h4 style="color: #000000">999</h4>
                                                                            </div>
-                                                                           <div class="d-flex flex-column align-items-center" style="text-align: left; color: #8B0000">ポスト
+                                                                           <div class="d-flex flex-column align-items-center" style="text-align: left; color: #8B0000">スコア
                                                                                 <h4 style="color: #000000">999</h4>
                                                                             </div>
                                                                         </div>
@@ -123,10 +131,22 @@
                                                                 @endif
                                                             </div>
                                                             <div class="space"></div>
+
+                                                            <div class="space"></div>
+                                                            <div style="font-weight: bold;font-size:30px;">ポストリスト</div>
+                                                            <div class="space"></div>
+
+                                                            @foreach($posts as $post)
+                                                                <div class="row center" style="">
+                                                                    <div class="col-sm-8" ><a style="color: #B22222;" href="{{URL::to('/posts/'.$post->post_id)}}">{{$post->title}}</a></div>
+                                                                    <div class="col-sm-4" ><p style="color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
+                                                                </div>
+                                                                <div class="space"></div>
+                                                            @endforeach                                                           
+
+                                                            <div class="space"></div>
                                                             <div style="font-weight: bold;font-size:30px;">ユーザー情報</div>
-                                                            <div class="space-4"></div>
-
-
+                                                            <div class="space"></div>
 
                                                             <div class="row">
                                                                 <div style="width:100px; height: 10px"></div>
@@ -199,7 +219,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="space-4"></div>
-                                                                    <div class="space-4"></div>
+
                                                                     
                                                                 </div>
                                                             </div>
