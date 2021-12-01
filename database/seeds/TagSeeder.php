@@ -1,6 +1,7 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagSeeder extends Seeder
 {
