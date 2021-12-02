@@ -89,7 +89,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.png') }}" alt=""></a>
+                                    <a href="{{ URL::to('/') }}"><img src="{{ asset('/user/img/logo/logo.svg') }}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -100,7 +100,7 @@
                                         <form action="{{ route('search.result') }}">
                                             <div class="form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                                    <input type="text" name="query" class="form-control" placeholder='キーワードで検索' onfocus="this.placeholder = ''" onblur="this.placeholder = 'キーワードで検索'">
                                                     <div class="input-group-append">
                                                         <button class="btns" type="submit"><i class="ti-search"></i></button>
                                                     </div>
