@@ -55,7 +55,7 @@
                                             <div class="space"></div>
                                             <form class="form-horizontal">
                                                 <div class="tabbable">
-                                                    <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);">
+                                                    <div class="tab-content profile-edit-tab-content rounded" style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
                                                         <div id="edit-basic" class="tab-pane in active">
                                                             <div class="buttons" style="text-align: right;">
                                                                 @if (Auth::user()->user_id == $user->user_id)
@@ -78,12 +78,12 @@
                                                                     @endif
                                                                 </div>
                                                                 
-                                                                <div class="col-xs-12 col-sm-8">
+                                                                <div class="col-xs-12 col-sm-8" >
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-username"style="font-weight: bold;">名前: </label>
-                                                                        <div class="col-sm-8">
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
                                                                             {{ $user->user_name }}
                                                                         </div>
       
@@ -94,7 +94,7 @@
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-lastname" style="font-weight: bold;">メール: </label>
 
-                                                                        <div class="col-sm-8">
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
                                                                             {{ $user->email }}
                                                                         </div>
                                                                     </div>
@@ -103,7 +103,7 @@
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-lastname" style="font-weight: bold;">誕生日: </label>
-                                                                        <div class="col-sm-8">
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
                                                                             {{ $user->birthday }}
                                                                         </div>
                                                                     </div>
@@ -113,7 +113,7 @@
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-lastname" style="font-weight: bold;">住所: </label>
 
-                                                                        <div class="col-sm-8">
+                                                                        <div class="col-sm-8" style="text-align: left;left: 20%;">
                                                                             {{ $user->address }}
                                                                         </div>
                                                                     </div>
@@ -148,7 +148,7 @@
                                             <div class="space"></div>
                                             <form class="form-horizontal">
                                                 <div class="tabbable">
-                                                    <div class="tab-content profile-edit-tab-content"style="background-color: rgb(220 220 220);">
+                                                    <div class="tab-content profile-edit-tab-content rounded"style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
                                                         <div id="edit-basc" class="tab-pane in active">
                                                             <div class="space"></div>
 
