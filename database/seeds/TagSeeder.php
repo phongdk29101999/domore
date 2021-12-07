@@ -13,7 +13,6 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-
             'tag_title' => '数学',
         ]);
         DB::table('tags')->insert([

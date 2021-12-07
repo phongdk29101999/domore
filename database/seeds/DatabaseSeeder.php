@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
