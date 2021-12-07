@@ -46,7 +46,7 @@
 
 .boxed-btn {
     background: #fff;
-    color: #C86FFF;
+    color: #C86FFF !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Josefin Sans", sans-serif;

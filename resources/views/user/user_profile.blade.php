@@ -1,5 +1,16 @@
 @extends('layout_user')
 @section('content')
+
+<style>
+.center {
+    margin: 0 auto;
+    width: 60%; 
+    background: lightpink;
+    padding: 5px;
+    border-radius: 10px;
+    word-wrap:break-word;
+}
+</style>
     <!--? slider Area Start-->
     <section class="slider-area slider-area2">
         <div class="slider-active">
@@ -13,7 +24,7 @@
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">ホーム</a></li>
                                         <li class="breadcrumb-item"><a
                                                 href="{{ URL::to('users/' . $user->user_id . '/posts') }}">{{$user->user_name}}'s
                                                 Post</a></li>
@@ -28,14 +39,15 @@
         </div>
     </section>
 
-    <!-- Courses area start -->
-    <div class="main-container ace-save-state" id="main-container">
+
+        <!-- Courses area start -->
+        <div class="main-container ace-save-state" id="main-container">
         <div class="main-content">
             <div class="main-content-inner">
                 <div class="page-content">
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="section-tittle text-center mb-55">
+                            <div class="section-tittle text-center ">
                                 <div class="hr dotted"></div>
                                 <div>
                                     <div id="user-profile-3" class="user-profile row">
@@ -43,135 +55,71 @@
                                             <div class="space"></div>
                                             <form class="form-horizontal">
                                                 <div class="tabbable">
-                                                    <div class="tab-content profile-edit-tab-content">
+                                                    <div class="tab-content profile-edit-tab-content rounded" style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
                                                         <div id="edit-basic" class="tab-pane in active">
-                                                            <h4 class="header blue bolder smaller">General</h4>
-                                                            <div class="row">
-                                                                @if ($user->avatar_url != null)
-                                                                <div class="block-ava">
-                                                                    <img src="/storage/avatar_url/{{ $user->avatar_url }}">
-                                                                </div>
-                                                                    {{-- <div class="vspace-12-sm"></div> --}}
-                                                                @else
-                                                                <div class="block-ava">
-                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}">
-                                                                </div>
+                                                            <div class="buttons" style="text-align: right;">
+                                                                @if (Auth::user()->user_id == $user->user_id)
+                                                                    <a  type="button"  href='/users/{{ $user->user_id }}/edit'>
+                                                                        <i class="fa fa-edit" style="font-size:28px;color:Black;"></i>
+                                                                    </a>
                                                                 @endif
-                                                                <div class="col-xs-12 col-sm-8">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-1 ">
+                                                                    @if ($user->avatar_url != null)
+                                                                        <div class="block-ava rounded" >
+                                                                        <img src="/storage/avatar_url/{{ $user->avatar_url }}">
+                                                                        </div>
+                                                                        {{-- <div class="vspace-12-sm"></div> --}}
+                                                                    @else
+                                                                        <div class="block-ava rounded"  >
+                                                                            <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                                
+                                                                <div class="col-xs-12 col-sm-8" >
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-username">Username</label>
-                                                                        <div class="col-sm-8">
+                                                                            for="form-field-username"style="font-weight: bold;">名前: </label>
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
                                                                             {{ $user->user_name }}
                                                                         </div>
+      
                                                                     </div>
+
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-firstname">First
-                                                                            name</label>
-                                                                        <div class="col-sm-8">
-                                                                            {{ $user->first_name }}
+                                                                            for="form-field-lastname" style="font-weight: bold;">メール: </label>
+
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
+                                                                            {{ $user->email }}
                                                                         </div>
                                                                     </div>
+
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-lastname">Last name</label>
-
-                                                                        <div class="col-sm-8">
-                                                                            {{ $user->last_name }}
+                                                                            for="form-field-lastname" style="font-weight: bold;">誕生日: </label>
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
+                                                                            {{ $user->birthday }}
                                                                         </div>
                                                                     </div>
-                                                                    <div class="space-4"></div>
-                                                                </div>
-                                                            </div>
-                                                            <hr />
-                                                            <div class="row">
-                                                                <div style="width:100px; height: 10px"></div>
-                                                                <div class="col-xs-12 col-sm-8">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-date">Birth Date</label>
-
-                                                                        <div class="col-sm-8">
-                                                                            <span class="input-icon input-icon-right">
-                                                                                {{ $user->birthday }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="space-4"></div>
 
                                                                     <div class="form-group">
                                                                         <label
-                                                                            class="col-sm-4 control-label no-padding-right">Gender</label>
-                                                                        <div class="col-sm-8">
-                                                                            {{ $user->gender }}
+                                                                            class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-lastname" style="font-weight: bold;">住所: </label>
+
+                                                                        <div class="col-sm-8" style="text-align: left;left: 20%;">
+                                                                            {{ $user->address }}
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="space-4"></div>
                                                                 </div>
                                                             </div>
-
-                                                            <h4 class="header blue bolder smaller">Contact</h4>
-                                                            <div class="row">
-                                                                <div style="width:100px; height: 10px"></div>
-                                                                <div class="col-xs-12 col-sm-8">
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-email">Email</label>
-
-                                                                        <div class="col-sm-8">
-                                                                            <span class="input-icon input-icon-right">
-                                                                                {{ $user->email }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="space-4"></div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-website">Address</label>
-
-                                                                        <div class="col-sm-8">
-                                                                            <span class="input-icon input-icon-right">
-                                                                                {{ $user->address }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="space-4"></div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-phone">Phone</label>
-
-                                                                        <div class="col-sm-8">
-                                                                            <span class="input-icon input-icon-right">
-                                                                                {{ $user->phone }}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="space"></div>
-                                                            @if (Auth::user()->user_id == $user->user_id)
-                                                                <div class="clearfix form-actions">
-                                                                    <div class="col-md-offset-3 col-md-9">
-                                                                        <a class="btn btn-info" type="button"  href='/users/{{ $user->user_id }}/edit'>
-                                                                            <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                                Edit
-                                                                                your
-                                                                                profile
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,4 +134,48 @@
             </div>
         </div>
     </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="section-tittle text-center mb-55">
+                                <div>
+                                    <div id="user-profile-3" class="user-profile row">
+                                        <div class="col-sm-offset-1 col-sm-10">
+                                            <div class="space"></div>
+                                            <form class="form-horizontal">
+                                                <div class="tabbable">
+                                                    <div class="tab-content profile-edit-tab-content rounded"style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
+                                                        <div id="edit-basc" class="tab-pane in active">
+                                                            <div class="space"></div>
+
+                                                            <div class="space"></div>
+                                                            <div style="font-weight: bold;font-size:30px;">ポストリスト</div>
+                                                            <div class="space"></div>
+                                                            @foreach($posts as $post)
+                                                                <div class="row center" style="">
+                                                                    <div class="col-sm-8" ><a style="color: #B22222;" href="{{URL::to('/posts/'.$post->post_id)}}">{{$post->title}}</a></div>
+                                                                    <div class="col-sm-4" ><p style="color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
+                                                                </div>
+                                                                <div class="space"></div>
+                                                            @endforeach                                                           
+                                                            <div class="space"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
