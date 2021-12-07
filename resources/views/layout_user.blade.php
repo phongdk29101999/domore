@@ -115,7 +115,6 @@
                       </form>
                     </aside>
                   </div>
-
                   <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                     <nav>
                       <ul id="navigation" class="d-flex justify-content-end align-items-center">
