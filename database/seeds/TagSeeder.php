@@ -1,7 +1,12 @@
 <?php
+<<<<<<< HEAD
 // phpcs:disable
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+=======
+
+use Illuminate\Database\Seeder;
+>>>>>>> c7e2262... Init project
 
 class TagSeeder extends Seeder
 {
@@ -13,6 +18,7 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
+<<<<<<< HEAD
             'tag_title' => '数学',
         ]);
         DB::table('tags')->insert([
@@ -35,6 +41,57 @@ class TagSeeder extends Seeder
         ]);
         DB::table('tags')->insert([
             'tag_title' => '他の',
+=======
+            'tag_title' => 'IOS',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Android',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'NLP',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Computer Vision',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Machine Learning'
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'PHP',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Laravel',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Java',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Web',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Web Application',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Python',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Network',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'IoT',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'VueJS',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'NodeJS',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'Ruby on Rails',
+        ]);
+        DB::table('tags')->insert([
+            'tag_title' => 'IT Tips',
+>>>>>>> c7e2262... Init project
         ]);
     }
 }

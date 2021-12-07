@@ -42,7 +42,11 @@
 
 <!-- Register -->
 
+<<<<<<< HEAD
 <main class="login-body">
+=======
+<main class="login-body" data-vide-bg="{{asset('/user/img/login-bg.mp4')}}">
+>>>>>>> c7e2262... Init project
     @yield('content')
 </main>
 

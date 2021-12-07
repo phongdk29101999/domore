@@ -21,7 +21,7 @@
 }
 
 .theme-bg {
-    background: #E5E5E5
+    background: #C86FFF
 }
 
 .brand-bg {
@@ -46,7 +46,7 @@
 
 .boxed-btn {
     background: #fff;
-    color: #C86FFF !important;
+    color: #C86FFF;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Josefin Sans", sans-serif;
@@ -632,7 +632,7 @@ hr {
 }
 
 #scrollUp, #back-top {
-    background: #E5E5E5;
+    background: #C86FFF;
     height: 50px;
     width: 50px;
     right: 31px;
@@ -2639,7 +2639,7 @@ hr {
 }
 
 .theme-bg {
-    background: #E5E5E5
+    background: #C86FFF
 }
 
 .brand-bg {
@@ -5914,10 +5914,12 @@ hr {
 }
 
 .comment-form {
-    border-top: 1px solid #eee;
+    border: 2px solid #000;
     padding-top: 45px;
     margin-top: 50px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .comment-form .form-group {
@@ -5925,9 +5927,11 @@ hr {
 }
 
 .comment-form h4 {
-    margin-bottom: 40px;
-    font-size: 18px;
-    line-height: 22px
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
 }
 
 .comment-form .name {
@@ -6047,7 +6051,9 @@ hr {
 }
 
 .form-contact .form-group {
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    margin-top: 16px;
+    text-align: right;
 }
 
 .form-contact .form-control {
@@ -7217,7 +7223,8 @@ b, sup, sub, u, del {
 
 .form-select {
     height: 40px;
-    width: 100%
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .form-select .nice-select {

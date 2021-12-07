@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 // phpcs:disable
+=======
+
+>>>>>>> c7e2262... Init project
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
