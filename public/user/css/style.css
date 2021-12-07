@@ -21,7 +21,7 @@
 }
 
 .theme-bg {
-    background: #C86FFF
+    background: #E5E5E5
 }
 
 .brand-bg {
@@ -142,19 +142,19 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     text-transform: normal
 }
-.text {
+/* .text {
     text-align: center;
     .login {
         color: #0071DA;
     }
-}
+} */
 p {
     font-family: "Mulish", sans-serif;
     font-size: 16px;
     line-height: 30px;
     margin-bottom: 15px;
     font-weight: normal;
-    
+
 }
 
 .bg-img-1 {
@@ -458,6 +458,18 @@ hr {
     padding: 30px 57px
 }
 
+.header-ava {
+    height: 102.24px;
+}
+
+.header-ava img{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    top: 25%;
+}
+
 .hero-btn {
     padding: 30px 29px
 }
@@ -620,7 +632,7 @@ hr {
 }
 
 #scrollUp, #back-top {
-    background: #C86FFF;
+    background: #E5E5E5;
     height: 50px;
     width: 50px;
     right: 31px;
@@ -2627,7 +2639,7 @@ hr {
 }
 
 .theme-bg {
-    background: #C86FFF
+    background: #E5E5E5
 }
 
 .brand-bg {
@@ -2647,7 +2659,14 @@ hr {
 }
 
 .theme-color {
-    color: #C86FFF
+    color: #E5E5E5
+}
+.header-area {
+    position: absolute;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 1px rgba(210, 8, 8, 0.5);
+    transform: rotate(0.08deg);
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2786,7 +2805,7 @@ hr {
 }
 
 .main-header .main-menu ul li a {
-    color: #fff;
+    color: #000;
     font-weight: 600;
     padding: 39px 2px;
     display: block;
@@ -2798,15 +2817,17 @@ hr {
     text-transform: capitalize
 }
 
-.main-header .main-menu ul li:hover > a {
+/* .main-header .main-menu ul li:hover > a {
     color: #fff
+} */
+.main-header .main-menu ul .header-ava ul.submenu {
+    left: -83px;
 }
-
 .main-header .main-menu ul ul.submenu {
     position: absolute;
     width: 170px;
     background: #fff;
-    left: 0;
+    left: -20%;
     top: 90%;
     visibility: hidden;
     opacity: 0;
@@ -2826,14 +2847,14 @@ hr {
 .main-header .main-menu ul ul.submenu > li > a {
     padding: 6px 10px !important;
     font-size: 16px;
-    color: #367FFF
+    color: #000
 }
 
-.main-header .main-menu ul ul.submenu > li > a:hover {
-    color: #C86FFF;
+/* .main-header .main-menu ul ul.submenu > li > a:hover {
+    color: #E5E5E5;
     background: none;
     padding-left: 13px !important
-}
+} */
 
 .button-header.margin-left {
     margin-left: 43px !important
@@ -4531,9 +4552,9 @@ hr {
 .login-form .form-input {
     position: relative;
     margin: 20px 0;
-    
+
 }
-::placeholder { 
+::placeholder {
     color: #000;
     opacity: 1; /* Firefox */
 }

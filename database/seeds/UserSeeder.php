@@ -39,13 +39,13 @@ class UserSeeder extends Seeder
             'job' => Str::random(10),
         ]);
         DB::table('users')->insert([
-            'first_name' => 'Phong',
-            'last_name' => 'Kim',
+            'first_name' => 'Aka',
+            'last_name' => 'Kuro',
             'user_name' => 'admin ',
             'password' => Hash::make('123456'),
             'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
-            'email' => 'phong.dk176843@sis.hust.edu.vn',
+            'email' => 'akakuro@example.com',
             'phone' => '0941067198',
             'address' => Str::random(20),
             'job' => Str::random(10),
