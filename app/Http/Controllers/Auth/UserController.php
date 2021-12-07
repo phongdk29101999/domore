@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -12,7 +13,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('user.user_profile')->with('user', $user);
+        $posts = Post::where('user_id', $id)->get();
+        return view('user.user_profile')->with(compact(['posts', $posts], ['user', $user]));
     }
 
     public function edit($id)

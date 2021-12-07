@@ -1,5 +1,6 @@
 <?php
 // phpcs:disable
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +18,6 @@ class CreateUserpostlikeTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('post_id')->unsigned();
             $table->integer('like_state')->default(1);
-
             $table->primary(['user_id', 'post_id']);
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');

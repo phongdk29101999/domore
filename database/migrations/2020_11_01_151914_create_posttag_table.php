@@ -1,5 +1,6 @@
 <?php
 // phpcs:disable
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,9 +18,7 @@ class CreatePosttagTable extends Migration
             // $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->integer('tag_id')->unsigned();
-
             $table->primary(['post_id', 'tag_id']);
-
             $table->foreign('post_id')->references('post_id')->on('posts')->onDelete('cascade');
             $table->foreign('tag_id')->references('tag_id')->on('tags')->onDelete('cascade');
         });

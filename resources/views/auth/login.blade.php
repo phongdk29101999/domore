@@ -33,9 +33,6 @@
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="ログイン">
             </div>
-            <!-- Forget Password -->
-            {{-- <a href="#" class="forget">Forget Password</a> --}}
-            <!-- Forget Password -->
         </div>
     </form>
     <!-- /end login form -->
