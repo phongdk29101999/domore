@@ -1,6 +1,57 @@
 @extends('layout_user')
 @section('content')
 
+<style>
+.nut_dropdown {
+  background-color: #f1f1f1;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.noidung_dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 145px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+
+}
+
+.noidung_dropdown a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+
+  display: block;
+}
+.hienThi{
+  display:block;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
+</style>
+
+
+
 <!--? slider Area Start-->
 <section class="slider-area ">
     
@@ -8,7 +59,7 @@
 <!-- Courses area start -->
 <div class="courses-area section-padding40 fix">
     <div class="col-sm-12" style="margin-bottom: 50px;">
-        <div class="col-sm-8">
+        <div class="col-sm-8 "style="left: 10%;">
             <img src="{{asset('/user/img/hero/image1.png')}}" alt="" style="width:1000px;">
         </div>
         <div class="col-sm-4" style="text-align: center;">
@@ -26,21 +77,49 @@
                 </div>
             </div>
         </div>
-        <div class="item_post">
-            @foreach($posts as $post)
-                <div class="content">
-                    
-                        <div class="title">{{$post->title}}</div>
-                        <div class="des">{{$post->description}}</div>
-                        <div class="date" style="font-style: italic">投稿時間： {{$post->date_create}}</div>
-                        <div class="date" style="font-style: italic">投稿者{{$post->user->user_name}}</div>
-                    
-                    
-                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="btn_1_1">続きを読む</a>
-                    
-                </div>
-            @endforeach
+   
+    <div class="dropdown">
+      <button onclick="hamDropdown()" class="nut_dropdown" style="color:Black;">全てカテゴリー</button>
+      <div class="noidung_dropdown">
+      @foreach ($tags as $tag)
+        <a style="color:Black;" href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+      @endforeach
+      </div>
+    </div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+
+    <div class="row">
+      <div class="col-sm-8" style="">Topic</div>
+      <div class="col-sm-1" style="">Replies</div>
+      <div class="col-sm-1" style="">Like</div>
+      <div class="col-sm-1" style="text-align: center;">Date</div>
+    </div>
+    <div class="hr"style="border: 2px solid #ccc;"></div>
+    <div class="">
+      @foreach($posts as $post)
+      <div class="content row">
+        <div class="col-sm-8" style="">
+          <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>
+          <div class="des">{{$post->description}}</div>
+          <div class="date" style="font-style: italic"><i class="fa fa-user"></i> {{$post->user->user_name}}</div>
         </div>
+        <div class="col-sm-1" >Replies</div>
+        <div class="col-sm-1" style="">Like</div>
+        <div class="col-sm-2" style="">{{$post->date_create}}</div>
+      </div>
+      <hr>
+      @endforeach
+    </div>
+<!-- @foreach($posts as $post)
+<div class="row center" style="">
+<div ><a style="width: 90%;color: #B22222;" href="{{URL::to('/posts/'.$post->post_id)}}">{{$post->title}}</a></div>
+<div ><p style="width: 10%;color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
+</div>
+<div class="space"></div>
+@endforeach   -->
+
         <!-- <div class="courses-actives">
             @foreach($posts as $post)
             <div class="properties pb-20">
@@ -64,5 +143,21 @@
         </div> -->
     </div>
 </div>
+
+<script>
+
+function hamDropdown() {
+ document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+}
+
+window.onclick = function(e) {
+  if (!e.target.matches('.nut_dropdown')) {
+  var noiDungDropdown = document.querySelector(".noidung_dropdown");
+    if (noiDungDropdown.classList.contains('hienThi')) {
+      noiDungDropdown.classList.remove('hienThi');
+    }
+  }
+}
+</script>
 <!-- Courses area End -->
 @endsection
