@@ -46,25 +46,55 @@
 
 .boxed-btn {
     background: #fff;
-    color: #C86FFF !important;
+    color: #000 !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Josefin Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
     border: 0;
-    border: 1px solid #C86FFF;
+    border: 1px solid #000;
     letter-spacing: 3px;
     text-align: center;
-    color: #C86FFF;
+    color: #000;
     text-transform: uppercase;
     cursor: pointer
 }
+.btn_1_1 {
+    background-color: white;
+    border: none;
+    color: #000;
+    padding: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 19px;
+}
+.item_post {
 
+}
+.item_post .content{
+    line-height: 22px;
+    text-align: left;
+    border-top: 1px solid #000;
+}
+.item_post .content.title {
+    color: gray;
+    margin-top: 10px !important;
+    font-size: 19px;
+    font-weight: 600;
+}
 .boxed-btn:hover {
-    background: #C86FFF;
+    background: #0d5aff;
     color: #fff !important;
-    border: 1px solid #C86FFF
+    border: 1px solid #0d5aff
 }
 
 .boxed-btn:focus {
@@ -154,7 +184,8 @@ p {
     line-height: 30px;
     margin-bottom: 15px;
     font-weight: normal;
-
+    text-align:center;
+    font-weight: 600;
 }
 
 .bg-img-1 {
@@ -210,7 +241,7 @@ a {
 }
 
 a:hover {
-    color: #fff
+    color: #0d5aff
 }
 
 a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
@@ -218,7 +249,7 @@ a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
 }
 
 a, button {
-    color: #fff;
+    color: #000;
     outline: medium none
 }
 
@@ -349,7 +380,9 @@ hr {
     color: #fff;
     background: #ff3500
 }
-
+.login-form .form-input input::placeholder {
+    color: #000;
+}
 .btn {
     background: #FF9F67;
     font-family: "Josefin Sans", sans-serif;
@@ -632,7 +665,7 @@ hr {
 }
 
 #scrollUp, #back-top {
-    background: #C86FFF;
+    background: #fff;
     height: 50px;
     width: 50px;
     right: 31px;
@@ -2337,7 +2370,7 @@ hr {
 }
 
 .section-padding40 {
-    padding-top: 100px;
+    padding-top: 150px;
     padding-bottom: 100px
 }
 
@@ -3017,7 +3050,7 @@ hr {
 }
 
 .slider-height2 {
-    min-height: 400px;
+    min-height: 330px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover
@@ -3067,14 +3100,14 @@ hr {
 }
 
 .slider-area, .slider-area2 {
-    background-image: url("../img/hero/h1_hero.png");
+    /* background-image: url("../img/hero/h1_hero.png"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center
 }
 
 .slider-area.slider-area2, .slider-area2.slider-area2 {
-    background-image: url("../img/hero/hero2.png")
+    /* background-image: url("../img/hero/hero2.png") */
 }
 
 .slider-area .hero__caption, .slider-area2 .hero__caption {
@@ -3149,7 +3182,7 @@ hr {
 }
 
 .slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
-    padding-top: 218px
+    padding-top: 150px
 }
 
 @media (max-width: 575px) {
@@ -4582,7 +4615,8 @@ hr {
 }
 
 .login-form .form-input input::placeholder {
-    color: #fff
+    color: #000;
+    opacity: 50%;
 }
 
 .login-form .form-input input[type="submit"] {
@@ -4824,7 +4858,7 @@ hr {
 }
 
 .blog_area a:hover, .blog_area a :hover {
-    background: -webkit-linear-gradient(131deg, #C86FFF 0%, #C86FFF 99%);
+    background: -webkit-linear-gradient(131deg, #1151b1 0%, #1151b1 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
@@ -5404,9 +5438,10 @@ hr {
 }
 
 .blog_right_sidebar .search_widget .input-group button {
-    background: #C86FFF;
+    background: #0d5aff;
     border-left: 0;
     border: 1px solid #f0e9ff;
+    /* border-radius: 10%; */
     padding: 4px 15px;
     border-left: 0;
     cursor: pointer
@@ -5916,7 +5951,7 @@ hr {
 .comment-form {
     border: 2px solid #000;
     padding-top: 45px;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 10px;

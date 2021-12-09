@@ -29,7 +29,7 @@ input[class="file-upload"] {
 } */
 
 .breadcrumb>li>a {
-    color: #ffffff;
+    color: #000;
     font-size: large;
 }
 
@@ -39,7 +39,7 @@ input[class="file-upload"] {
     align-items: center;
     justify-content: center; */
     /* background: #C86FFF; */
-    background: #1151b1;
+    background: #0d5aff;
     height: 70px;
     width: 70px;
     left: 31px;
@@ -63,8 +63,7 @@ input[class="file-upload"] {
     color:white!important;
 } */
 .reacted{
-    color: #C86FFF;
-
+    color: #1151b1;
 }
 /* .react-btnd:hover{
     color: rgb(255, 255, 255)!important;

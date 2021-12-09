@@ -3,21 +3,7 @@
 <!--? slider Area Start-->
 
 <section class="slider-area slider-area2">
-    <div class="slider-active">
-        <!-- Single Slider -->
-        <div class="single-slider slider-height2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-11 col-md-12">
-                        <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">あなたの質問 </h1>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </section>
 
 <div class="container">
@@ -48,20 +34,19 @@
                         <div class="vspace-12-sm"></div>
                     </div>
 
-
-
                     <div class="col-12">
-                        <select class="form-select form-select-lg" aria-label=".form-select-lg example">
-                        <option selected>科目</option>
-                        @foreach($tags as $tag)
-                            <option value="{{$tag->tag_id}}">{{$tag->tag_title}}</option>
-                        @endforeach
-                        </select>
+                        <div class="form-group" style="text-align: center;">
+                        <h2>科目</h2>
+                            @foreach($tags as $tag)
+                            <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}</label>
+                            @endforeach
                             <br/>
                                 @error('tags')
                                 <b><span style="color: red;">{{ $message }}</span></b>
                                 @enderror
+                        </div>
                     </div>
+
 
                     <div class="col-12">
                         <div class="form-group">
