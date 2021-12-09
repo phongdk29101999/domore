@@ -122,7 +122,7 @@
                             href="{{ URL::to('/home-page') }}">ホーム</a></li>
                         <li><a href="{{ URL::to('/posts') }}">ポスト</a></li>
                         <li><a href="{{ URL::to('create_post') }}">作成</a></li>
-                        <li><a href="#">カテゴリー</a>
+                        <!-- <li><a href="#">カテゴリー</a>
                           <ul class="submenu">
                             @foreach ($tags as $tag)
                               <li><a
@@ -130,7 +130,7 @@
                               </li>
                             @endforeach
                           </ul>
-                        </li>
+                        </li> -->
 
                         @if (Auth::user())
                           @if (Auth::user()->admin)

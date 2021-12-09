@@ -1,79 +1,126 @@
 @extends('layout_user')
 @section('content')
 
+<style>
+.nut_dropdown {
+  background-color: #f1f1f1;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.noidung_dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 145px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+
+}
+
+.noidung_dropdown a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+
+  display: block;
+}
+.hienThi{
+  display:block;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
+</style>
+
+
+
 <!--? slider Area Start-->
 <section class="slider-area ">
-    <div class="slider-active">
-        <!-- Single Slider -->
-        <div class="single-slider slider-height d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-7 col-md-12">
-                        <div class="hero__caption">
-                            <h1 data-animation="fadeInLeft" data-delay="0.2s">Knowledge Sharing<br> platform</h1>
-                            <p data-animation="fadeInLeft" data-delay="0.4s">Knowledge is power. Knowledge shared is power multiplied</p>
-                            @if (!session('status') && !auth()->user())
-                            <a href="{{ URL::to('/register') }}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Join to Share</a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </section>
-<!-- ? services-area -->
-
-<div class="services-area">
-    <div class="container">
-        <div class="row justify-content-sm-center">
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon1.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>60+ Post every day</h3>
-                        <p>We share knowledge about: IT, Experiences, Work, Travel,...  </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon2.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>Expert users</h3>
-                        <p>Vietnames experts are all here.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon3.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>30+ minutes reading </h3>
-                        <p>The more you read, the more you learn.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Courses area start -->
 <div class="courses-area section-padding40 fix">
+    <div class="col-sm-12" style="margin-bottom: 50px;">
+        <div class="col-sm-8 "style="left: 10%;">
+            <img src="{{asset('/user/img/hero/image1.png')}}" alt="" style="width:1000px;">
+        </div>
+        <div class="col-sm-4" style="text-align: center;">
+             <a class="btn_1_1" href="{{ URL::to('create_post') }}"> 
+                投稿しましょう！
+            </a> 
+        </div>
+
+    </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8">
                 <div class="section-tittle text-center mb-55">
-                    <h2>Newest Post</h2>
+                    <h2>すべてのポスト</h2>
                 </div>
             </div>
         </div>
-        <div class="courses-actives">
+   
+    <div class="dropdown">
+      <button onclick="hamDropdown()" class="nut_dropdown" style="color:Black;">全てカテゴリー</button>
+      <div class="noidung_dropdown">
+      @foreach ($tags as $tag)
+        <a style="color:Black;" href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+      @endforeach
+      </div>
+    </div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+
+    <div class="row">
+      <div class="col-sm-8" style="">Topic</div>
+      <div class="col-sm-1" style="">Replies</div>
+      <div class="col-sm-1" style="">Like</div>
+      <div class="col-sm-1" style="text-align: center;">Date</div>
+    </div>
+    <div class="hr"style="border: 2px solid #ccc;"></div>
+    <div class="">
+      @foreach($posts as $post)
+      <div class="content row">
+        <div class="col-sm-8" style="">
+          <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>
+          <div class="des">{{$post->description}}</div>
+          <div class="date" style="font-style: italic"><i class="fa fa-user"></i> {{$post->user->user_name}}</div>
+        </div>
+        <div class="col-sm-1" >Replies</div>
+        <div class="col-sm-1" style="">Like</div>
+        <div class="col-sm-2" style="">{{$post->date_create}}</div>
+      </div>
+      <hr>
+      @endforeach
+    </div>
+<!-- @foreach($posts as $post)
+<div class="row center" style="">
+<div ><a style="width: 90%;color: #B22222;" href="{{URL::to('/posts/'.$post->post_id)}}">{{$post->title}}</a></div>
+<div ><p style="width: 10%;color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
+</div>
+<div class="space"></div>
+@endforeach   -->
+
+        <!-- <div class="courses-actives">
             @foreach($posts as $post)
             <div class="properties pb-20">
                 <div class="properties__card">
@@ -93,9 +140,24 @@
                 </div>
             </div>
             @endforeach
-
-        </div>
+        </div> -->
     </div>
 </div>
+
+<script>
+
+function hamDropdown() {
+ document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+}
+
+window.onclick = function(e) {
+  if (!e.target.matches('.nut_dropdown')) {
+  var noiDungDropdown = document.querySelector(".noidung_dropdown");
+    if (noiDungDropdown.classList.contains('hienThi')) {
+      noiDungDropdown.classList.remove('hienThi');
+    }
+  }
+}
+</script>
 <!-- Courses area End -->
 @endsection

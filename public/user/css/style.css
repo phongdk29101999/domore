@@ -60,7 +60,37 @@
     text-transform: uppercase;
     cursor: pointer
 }
-
+.btn_1_1 {
+    background-color: white;
+    border: none;
+    color: #000;
+    padding: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 19px;
+}
+.item_post {
+   
+}
+.item_post .content{
+    line-height: 22px;
+    text-align: left;
+    border-top: 1px solid #000;
+}
+.item_post .content.title {
+    color: gray;
+    margin-top: 10px !important;
+    font-size: 19px;
+    font-weight: 600;
+}
 .boxed-btn:hover {
     background: #0d5aff;
     color: #fff !important;
@@ -154,7 +184,8 @@ p {
     line-height: 30px;
     margin-bottom: 15px;
     font-weight: normal;
-
+    text-align:center;
+    font-weight: 600;
 }
 
 .bg-img-1 {
@@ -349,7 +380,9 @@ hr {
     color: #fff;
     background: #ff3500
 }
-
+.login-form .form-input input::placeholder {
+    color: #000;
+}
 .btn {
     background: #FF9F67;
     font-family: "Josefin Sans", sans-serif;
@@ -2337,7 +2370,7 @@ hr {
 }
 
 .section-padding40 {
-    padding-top: 100px;
+    padding-top: 150px;
     padding-bottom: 100px
 }
 
@@ -4582,7 +4615,8 @@ hr {
 }
 
 .login-form .form-input input::placeholder {
-    color: #fff
+    color: #000;
+    opacity: 50%;
 }
 
 .login-form .form-input input[type="submit"] {
@@ -5917,7 +5951,7 @@ hr {
 .comment-form {
     border: 2px solid #000;
     padding-top: 45px;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 10px;
