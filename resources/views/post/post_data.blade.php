@@ -67,7 +67,7 @@ hr {
     border: 0;
     border-top: 1px solid #ccc;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
 }
 </style>
 
@@ -89,10 +89,10 @@ hr {
 
 
 <div class="row">
-    <div class="col-sm-8" style="">Topic</div>
-    <div class="col-sm-1" style="">Replies</div>
-    <div class="col-sm-1" style="">Like</div>
-    <div class="col-sm-1" style="text-align: center;">Date</div>
+    <div class="col-sm-8" style="">ポスト</div>
+    <div class="col-sm-1" style="">コメント</div>
+    <div class="col-sm-1" style="">いいね</div>
+    <div class="col-sm-1" style="text-align: center;">登録日</div>
 </div>
 <div class="hr"style="border: 2px solid #ccc;"></div>
 <div class="">
