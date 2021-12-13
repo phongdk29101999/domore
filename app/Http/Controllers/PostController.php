@@ -106,7 +106,17 @@ class PostController extends Controller
         $posts = Post::whereHas('tags', function ($query) use ($tag_id) {
             $query->where('tags.tag_id', $tag_id);
         })->paginate(3);
-
+        $comment_count = array();
+        $like_count = array();
+        if ($posts->count() !== 0) {
+            foreach ($posts as $post) {
+                $comment_count[$post->post_id] = DB::table('comments')
+                    ->join('posts', 'comments.post_id', '=', 'posts.post_id')
+                    ->where('posts.post_id', '=', $post->post_id)
+                    ->count();
+                $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
+            }
+        }
         $tag = Tag::find($tag_id);
         if($tag == null){
             return view('error.error')->with('code',404)->with('message','Tag id not found');
@@ -117,7 +127,7 @@ class PostController extends Controller
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();
         }
-        return view('post.posts', compact('posts', 'title'));
+        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count'));
     }
 
     # Create new post
