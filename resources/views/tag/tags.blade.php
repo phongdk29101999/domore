@@ -1,7 +1,7 @@
 @extends('layout_admin')
 @section('content')
     <!--? slider Area Start-->
-    <section class="slider-area slider-area2">
+    {{-- <section class="slider-area slider-area2">
         <div class="slider-active">
             <!-- Single Slider -->
             <div class="single-slider slider-height2">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     @if (!isset($data))
         <h3>Empty Tag</h3>

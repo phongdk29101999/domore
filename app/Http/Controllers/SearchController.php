@@ -7,6 +7,7 @@ use Spatie\Searchable\Search;
 use App\Http\Controllers\Controller;
 use Spatie\Searchable\ModelSearchAspect;
 use App\Post;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -41,8 +42,19 @@ class SearchController extends Controller
                     ->addSearchableAttribute('content'); // return results for partial matches
             })
             ->perform($searchterm);
-            // dd($searchResults);
-
-        return view('search.searchPost', compact('searchResults', 'searchterm'));
+        $comment_count = array();
+        $like_count = array();
+        if (!$searchResults->isEmpty()) {
+            foreach ($searchResults->groupByType() as $type => $modelSearchResults) {
+                foreach ($modelSearchResults as $searchResult) {
+                    $comment_count[$type][$searchResult->searchable->post_id] = DB::table('comments')
+                    ->join('posts', 'comments.post_id', '=', 'posts.post_id')
+                    ->where('posts.post_id', '=', $searchResult->searchable->post_id)
+                    ->count();
+                    $like_count[$type][$searchResult->searchable->post_id] = DB::table('user_post_like')->where('post_id', $searchResult->searchable->post_id)->where('like_state', 1)->count();
+                }
+            }
+        }
+        return view('search.searchPost', compact('searchResults', 'searchterm', 'comment_count', 'like_count'));
     }
 }

@@ -76,7 +76,15 @@ hr {
       <button onclick="hamDropdown()" class="nut_dropdown" style="color:Black;">全てカテゴリー</button>
       <div class="noidung_dropdown">
       @foreach ($tags as $tag)
-        <a style="color:Black;" href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+        <a
+            style="color:Black;"
+            href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}"
+            @if ($tag->tag_title == $title)
+                class="drop-item active"
+            @else
+                class="drop-item"
+            @endif
+        >{{ $tag->tag_title }}</a>
       @endforeach
       </div>
     </div>
@@ -103,8 +111,8 @@ hr {
             <div class="des">{{$post->description}}</div>
             <div class="date" style="font-style: italic"><i class="fa fa-user"></i> {{$post->user->user_name}}</div>
         </div>
-        <div class="col-sm-1" >Replies</div>
-        <div class="col-sm-1" style="">Like</div>
+        <div class="col-sm-1" >{{$comment_count[$post->post_id]}}</div>
+        <div class="col-sm-1" style="">{{$like_count[$post->post_id]}}</div>
         <div class="col-sm-2" style="">{{$post->date_create}}</div>
     </div>
     <hr>
@@ -131,6 +139,9 @@ hr {
 
 function hamDropdown() {
  document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+}
+if (document.getElementsByClassName("drop-item active")[0].innerHTML != "") {
+    document.getElementsByClassName("nut_dropdown")[0].innerHTML = document.getElementsByClassName("drop-item active")[0].innerHTML;
 }
 
 window.onclick = function(e) {

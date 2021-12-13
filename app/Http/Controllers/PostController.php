@@ -28,11 +28,22 @@ class PostController extends Controller
     function all_post(Request $request)
     {
         $posts = Post::paginate(3);
+        $comment_count = array();
+        $like_count = array();
         $title = "Posts";
-        if ($request->ajax()) {
-            return view('post.post_data', compact('posts', 'title'))->render();
+        if ($posts->count() !== 0) {
+            foreach ($posts as $post) {
+                $comment_count[$post->post_id] = DB::table('comments')
+                    ->join('posts', 'comments.post_id', '=', 'posts.post_id')
+                    ->where('posts.post_id', '=', $post->post_id)
+                    ->count();
+                $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
+            }
         }
-        return view('post.posts', compact('posts', 'title'));
+        if ($request->ajax()) {
+            return view('post.post_data', compact('posts', 'title', 'comment_count', 'like_count'))->render();
+        }
+        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count'));
     }
 
     # Get post by id
