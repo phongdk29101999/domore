@@ -121,8 +121,8 @@ hr {
           <div class="des">{{$post->description}}</div>
           <div class="date" style="font-style: italic"><i class="fa fa-user"></i> {{$post->user->user_name}}</div>
         </div>
-        <div class="col-sm-1" >Replies</div>
-        <div class="col-sm-1" style="">Like</div>
+        <div class="col-sm-1" >{{$comment_count[$post->post_id]}}</div>
+        <div class="col-sm-1" style="">{{$like_count[$post->post_id]}}</div>
         <div class="col-sm-2" style="">{{$post->date_create}}</div>
       </div>
       <hr>
