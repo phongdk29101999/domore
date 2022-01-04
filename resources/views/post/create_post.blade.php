@@ -30,6 +30,9 @@
                                 画像をアップロード
                             </label>
                             <input type="file" name="post_url" class="file-upload" id="post_url">
+                            <button  class="btn btn_ntc ">
+                            誰があなたのポストを見ることができますか?
+                            </label>
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
