@@ -90,15 +90,13 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-first">Name</label>
+                                                                        for="form-field-first">学生</label>
 
                                                                     <div class="col-sm-9">
-                                                                        <input class="input-small" type="text"
+                                                                        <input  type="text"
                                                                             id="form-field-first" placeholder="First Name"
                                                                             name="firstname" value={{ $user->first_name }}>
-                                                                        <input class="input-small" type="text"
-                                                                            id="form-field-last" placeholder="Last Name"
-                                                                            name="lastname" value={{ $user->last_name }}>
+
                                                                     </div>
                                                                     {{-- <div class="col-sm-9">
                                                                     <small>
@@ -108,6 +106,24 @@
                                                                             @enderror
                                                                         </span>
                                                                     </small>
+                                                                    </div> --}}
+                                                                </div>
+
+                                                                <div class="space-4"></div>
+
+
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-3 control-label no-padding-right"
+                                                                        for="form-field-first">学校の名</label>
+
+                                                                    <div class="col-sm-9">
+
+
+                                                                        <input  type="text"
+                                                                            id="form-field-last" placeholder="Last Name"
+                                                                            name="lastname" value={{ $user->last_name }}>
+                                                                    </div>
+                                                                    {{-- <div class="col-sm-9">
                                                                     <small>
                                                                         <span>
                                                                             @error('lastname')
@@ -118,6 +134,9 @@
                                                                     </div> --}}
                                                                 </div>
                                                                 <div class="space-4"></div>
+                                                                
+
+
                                                                 <hr />
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"

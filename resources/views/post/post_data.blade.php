@@ -101,7 +101,7 @@ hr {
         <div class="col-sm-8" style="">
             <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>
             <div class="des">{{$post->description}}</div>
-            <div class="date" style="font-style: italic"><i class="fa fa-user"></i> {{$post->user->user_name}}</div>
+            <a class="date" style="color: #000000;" href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> {{$post->user->user_name}}</a>
         </div>
         <div class="col-sm-1" >Replies</div>
         <div class="col-sm-1" style="">Like</div>
@@ -110,22 +110,6 @@ hr {
     <hr>
     @endforeach
 </div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-<div class="space"></div>
-
 
 <script>
 

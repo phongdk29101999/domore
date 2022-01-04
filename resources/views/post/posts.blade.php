@@ -34,6 +34,18 @@
 
             <div class="row d-flex flex-column" id="table_data">
                 @include('post.post_data')
+                <div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+<div class="space"></div>
+
             </div>
 
         </div>

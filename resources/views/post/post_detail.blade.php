@@ -52,8 +52,36 @@
                         <h2 style="color: #2d2d2d;">
                             {{$post->title}}
                         </h2>
+                        <div class="row">
+
+                            @if ($post->user->avatar_url != null)
+                            <div class="block-ava" style="position: absolute; bottom:0; left:0;">
+                                <img src="{{asset('storage/avatar_url/'.$post->user->avatar_url)}}">
+                            </div>
+                                {{-- <div class="vspace-12-sm"></div> --}}
+                            @else
+                            <div class="block-ava">
+                                <img src="{{asset('/user/img/default_avt.jpg')}}">
+                            </div>
+                            @endif
+
+                            <div class="col-sm-8" >
+                                <div class="form-group" >
+                                    <div class="col-sm-8"  > 
+                                        <a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        {{ $post->user->first_name }}
+                                    </div>
+                                    <div class="col-sm-8">
+                                        {{ $post->user->last_name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
                             <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} Comments</a></li>
                             <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                             <li class="like-info">

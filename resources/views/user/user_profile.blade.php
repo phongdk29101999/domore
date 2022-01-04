@@ -65,7 +65,6 @@
                                                                 @endif
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-sm-1 ">
                                                                     @if ($user->avatar_url != null)
                                                                         <div class="block-ava rounded" >
                                                                         <img src="/storage/avatar_url/{{ $user->avatar_url }}">
@@ -76,7 +75,6 @@
                                                                             <img src="{{asset('/user/img/default_avt.jpg')}}">
                                                                         </div>
                                                                     @endif
-                                                                </div>
                                                                 
                                                                 <div class="col-xs-12 col-sm-8" >
                                                                     <div class="form-group">
@@ -88,6 +86,26 @@
                                                                         </div>
       
                                                                     </div>
+
+
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-username"style="font-weight: bold;">学生: </label>
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
+                                                                            {{ $user->first_name }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-username"style="font-weight: bold;">学校の名: </label>
+                                                                        <div class="col-sm-8"style="text-align: left;left: 20%;">
+                                                                            {{ $user->last_name }}
+                                                                        </div>
+                                                                    </div>
+
+
 
                                                                     <div class="form-group">
                                                                         <label
@@ -118,6 +136,23 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-lastname" style="font-weight: bold;"> 2ポスト</label>
+                                                                        <label
+                                                                            class="col-sm-4 control-label no-padding-right"
+                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;">15 フォロワー</label>
+
+                                                                        <label
+                                                                            class="col-sm-2 control-label no-padding-right"
+                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;">5 フォロイング</label>
+
+
+                                                                    </div>
+                                                                    
+
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
