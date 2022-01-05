@@ -34,7 +34,7 @@ class TagSeeder extends Seeder
             'tag_title' => '日本語',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => 'その他',
+            'tag_title' => '他の',
         ]);
     }
 }

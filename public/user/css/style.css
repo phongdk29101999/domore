@@ -408,86 +408,7 @@ hr {
     margin: 0;
     display: inline-block !important
 }
-.item_cmt {
-    display: flex;
-    flex-direction: column;
-}
-.btn1 {
-    background: #169BE5;
-    font-family: "Josefin Sans", sans-serif;
-    text-transform: capitalize;
-    padding: 5px 65px !important;
-    color: #fff;
-    cursor: pointer;
-    display: inline-blockc !important;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 20px;
-    line-height: 1;
-    -moz-user-select: none;
-    letter-spacing: 1px;
-    line-height: 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    transition: color 0.4s linear;
-    position: relative;
-    z-index: 1;
-    border: 0;
-    overflow: hidden;
-    margin: 0;
-    display: inline-block !important
-}
-.btn_ntc {
-    background: #169BE5;
-    text-transform: capitalize;
-    padding: 15px 25px !important;
-    color: #fff;
-    cursor: pointer;
-    display: inline-blockc !important;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 20px;
-    line-height: 1;
-    -moz-user-select: none;
-    letter-spacing: 1px;
-    line-height: 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    transition: color 0.4s linear;
-    position: relative;
-    z-index: 1;
-    border: 0;
-    overflow: hidden;
-    margin: 0;
-    display: inline-block !important
-}
-.chose_option {
-    background: #55E47D;
-    text-transform: capitalize;
-    padding: 25px 20px !important;
-    color: #000;
-    cursor: pointer;
-    display: inline-blockc !important;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 20px;
-    -moz-user-select: none;
-    letter-spacing: 1px;
-    line-height: 0;
-    margin-bottom: 0;
-    cursor: pointer;
-    transition: color 0.4s linear;
-    position: relative;
-    z-index: 1;
-    border: 0;
-    overflow: hidden;
-    margin: 0;
-    display: inline-block !important
-}
-.button {
-    display: flex;
-    align-items: flex-end;
-}
+
 .btn::before {
     content: "";
     position: absolute;
@@ -1462,7 +1383,7 @@ hr {
 }
 
 .pt-30 {
-    padding-top: 10px
+    padding-top: 30px
 }
 
 .pt-35 {
@@ -2950,21 +2871,7 @@ hr {
     -o-transition: .3s;
     transition: .3s
 }
-ul.submenu {
-    position: absolute;
-    width: 170px;
-    background: #fff;
-    left: -20%;
-    top: 90%;
-    visibility: hidden;
-    opacity: 0;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
-    padding: 17px 0;
-    -webkit-transition: .3s;
-    -moz-transition: .3s;
-    -o-transition: .3s;
-    transition: .3s
-}
+
 .main-header .main-menu ul ul.submenu > li {
     margin-left: 7px;
     display: block
@@ -4677,6 +4584,8 @@ ul.submenu {
 
 .login-form .form-input {
     position: relative;
+    margin: 20px 0;
+
 }
 ::placeholder {
     color: #000;
@@ -5989,80 +5898,11 @@ ul.submenu {
 .comments-area .comment-list:last-child {
     padding-bottom: 0px
 }
-.comment-list {
-    border: 1px solid grey;
-    border-radius: 25px;
-    padding: 20px;
-    margin-bottom: 10px;
-}
-.comment {
-    border: 1px solid #000;
-    border-radius: 15px;
-    padding: 10px;
-    margin-top: 35px !important;
-}
-.comments-area.left-padding {
+
+.comments-area .comment-list.left-padding {
     padding-left: 25px
 }
-.popup_modal {
-    -webkit-backdrop-filter: unset;
-    position: absolute;
-    top: 22%;
-    left: 80%;
-    width: 480px;
-    padding: 45px;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 15px 20px rgb(0 0 0 / 20%);
-    border-radius: 30px;
-    background-color: #fff;
-    border: 1px solid #000;
-}
-.popup_chose {
-    -webkit-backdrop-filter: unset;
-    position: absolute;
-    top: 325%;
-    left: 62%;
-    width: 400px;
-    padding: 15px;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 15px 20px rgb(0 0 0 / 20%);
-    border-radius: 30px;
-    background-color: #fff;
-    border: 1px solid #000;
-}
-.popup_chose a.title {
-    font-size: 19px;
-    font-weight: 500;
-    color: #000;
-    margin-bottom: 15px;
-    text-align: center;
-}
-a.title {
-    font-size: 21px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 15px;
-    text-align: left;
-}
-a.text {
-    font-size: 19px;
-    font-weight: 700;
-    color: blue;
-    margin-bottom: 15px;
-    text-align: right;
-}
-.notice-ava{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 1px solid rgb(47, 0, 255);
-    overflow: hidden;
-    margin-top: 15px;
-}
+
 @media (max-width: 413px) {
     .comments-area .comment-list .single-comment h5 {
         font-size: 12px

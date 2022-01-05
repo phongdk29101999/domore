@@ -33,12 +33,6 @@
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="ログイン">
             </div>
-            <div class="form-input pt-30">
-                <a href="#"class="btn1 btn-danger btn-block"> <img src="{{asset('/user/img/hero/gg.png')}}" alt="" >グーグルでログイン</a>
-            </div>
-            <div class="form-input pt-30">
-                <a href="#" class="btn1 btn-danger btn-block"> <img src="{{asset('/user/img/hero/fb.png')}}" alt="" >フェイスブックでログイン</a>
-            </div>
         </div>
     </form>
     <!-- /end login form -->

@@ -19,26 +19,12 @@
         $('#react-btn').fadeOut(500);
       } else {
         $(".header-sticky").addClass("sticky-bar");
-       
+        $('#back-top').fadeIn(500);
         $('#react-btn').fadeIn(500);
       }
     });
 
   // Scroll Up
-    $('.notice').on("click", function () {
-      $('.popup_modal').css('display', 'block');
-    });
-    $('.chose_option').on("click", function () {
-      $('.popup_chose').css('display', 'block');
-    });
-
-    $('.close').on("click", function () {
-      $('.popup_modal').css('display', 'none');
-    });
-    $('.close_chose').on("click", function () {
-      $('.popup_chose').css('display', 'none');
-    });
-
     $('#back-top a').on("click", function () {
       $('body,html').animate({
         scrollTop: 0
