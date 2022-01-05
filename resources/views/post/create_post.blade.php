@@ -23,16 +23,70 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-8">
                         <div class="col-xs-12 " style="display: flex;">
                             <img src="{{ asset('/user/img/logo/Vector.png') }}" alt="">
                             <label for="post_url" class="btn btn3 custom-file-upload">
                                 画像をアップロード
                             </label>
                             <input type="file" name="post_url" class="file-upload" id="post_url">
-                            <button  class="btn btn_ntc ">
-                            誰があなたのポストを見ることができますか?
-                            </label>
+                            <a href="#"  class="chose_option" style="margin-left: 10px;">
+                                誰がこのポストを見ることができますか?
+                            </a>
+                            <div class="popup_chose" style="display:none">
+                                <a href="#" style="margin-left: 10px;" class="close_chose"><img src="{{asset('/user/img/hero/muiten.png')}}"></a>
+                                <a href="#"  class="title" style="margin-left: 60px;">オブジェクトを選択</a>
+                                <div style="display: flex; justify-content: space-between; margin-top:15px;  border-top: 1px solid #000;">
+                                <a href="#" class="title" style="font-size: 14px; margin-left:15px;"><br>誰があなたのポストを見ることができますか?</a>
+                                </div>
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <div class="">
+                                        <img src="{{asset('/user/img/hero/a.png')}}">
+                                        </div>
+                                    </div>
+                                    <div class="desc" style="margin:20px;">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center " style="flex-direction: column; margin-top: -20px;">
+                                            <p href="#" style="font-size: 21px; margin-left: -200px;" for="vehicle1">公衆</p>
+                                            <a href="#" style="font-size: 13px;" for="vehicle1">誰もがあなたのポストを見ることができます。</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <input style="margin-top: 35px;" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                </div>
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <div class="">
+                                        <img src="{{asset('/user/img/hero/b.png')}}">
+                                        </div>
+                                    </div>
+                                    <div class="desc" style="margin:20px;">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center " style="flex-direction: column; margin-top: -20px;">
+                                            <p href="#" style="font-size: 21px; margin-left: -146px;" for="vehicle2">フォロワー</p>
+                                            <a href="#" style="font-size: 13px; margin-left: -132px;" for="vehicle2">あなたのフォロワー</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <input style="margin-top: 35px;" type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                </div>
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <div class="notice-ava" style="width: 75px; height: 75px;">
+                                        <img style="width: 75px" src="{{asset('/user/img/hero/c.png')}}">
+                                        </div>
+                                    </div>
+                                    <div class="desc" style="margin:20px;">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center " style="flex-direction: column; margin-top: -20px;">
+                                            <p href="#" style="font-size: 21px; margin-left: -186px; margin-top: 40px;" for="vehicle1">私だけ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <input type="checkbox" style="margin-top: 35px;" id="vehicle1" name="vehicle1" value="Bike">
+                                </div>
+                            </div>
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>

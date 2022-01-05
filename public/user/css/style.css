@@ -461,6 +461,29 @@ hr {
     margin: 0;
     display: inline-block !important
 }
+.chose_option {
+    background: #55E47D;
+    text-transform: capitalize;
+    padding: 25px 20px !important;
+    color: #000;
+    cursor: pointer;
+    display: inline-blockc !important;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+    -moz-user-select: none;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+    display: inline-block !important
+}
 .button {
     display: flex;
     align-items: flex-end;
@@ -2927,7 +2950,21 @@ hr {
     -o-transition: .3s;
     transition: .3s
 }
-
+ul.submenu {
+    position: absolute;
+    width: 170px;
+    background: #fff;
+    left: -20%;
+    top: 90%;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+    padding: 17px 0;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
 .main-header .main-menu ul ul.submenu > li {
     margin-left: 7px;
     display: block
@@ -5968,10 +6005,6 @@ hr {
     padding-left: 25px
 }
 .popup_modal {
-    /* border-radius: 8px;
-    margin-top: 35px;
-    border: 2px solid #42BC8D;
-    width: 600px; */
     -webkit-backdrop-filter: unset;
     position: absolute;
     top: 22%;
@@ -5985,6 +6018,28 @@ hr {
     border-radius: 30px;
     background-color: #fff;
     border: 1px solid #000;
+}
+.popup_chose {
+    -webkit-backdrop-filter: unset;
+    position: absolute;
+    top: 325%;
+    left: 62%;
+    width: 400px;
+    padding: 15px;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 20px rgb(0 0 0 / 20%);
+    border-radius: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.popup_chose a.title {
+    font-size: 19px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 15px;
+    text-align: center;
 }
 a.title {
     font-size: 21px;
