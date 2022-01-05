@@ -60,3 +60,8 @@ Route::match(['GET','POST'],'tags/new','TagController@create')->middleware('requ
 Route::get('/tags/{tag_id}','TagController@show')->middleware('require_admin');
 Route::match(['GET','POST'],'/tags/{tag_id}/edit','TagController@edit')->middleware('require_admin');
 Route::get('/tags/delete/{tag_id}','TagController@delete')->middleware('require_admin');
+
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.gg');;
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook')->name('login.fb');;
+Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');

@@ -253,8 +253,6 @@ class PostController extends Controller
         }
         return redirect("/posts/{$request->post_id}");
     }
-
-
     public function require_same_user($post_id){
         $post = Post::find($post_id);
         $post_user = $post->user;

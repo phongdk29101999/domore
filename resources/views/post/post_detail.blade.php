@@ -133,7 +133,7 @@
                   <div class="d-flex justify-content-between">
                      <div class="d-flex align-items-center">
                       <h5>
-                       <a href="{{ URL::to('users/' . $post->user->user_id) }}">{{$comment->user_name}}</a>
+                       <a href="{{ URL::to('users/' . $post->user->user_id) }}" style="font-size: 21px;">{{$comment->user_name}}</a>
                       </h5>
                      </div>
                   </div>
@@ -141,6 +141,12 @@
                     {{$comment->content}}
                   </p>
                  </div>
+                </div>
+                <div class="item_cmt">
+                <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a>
+                <a href="#" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
+               
                 </div>
                </div>
             </div>
