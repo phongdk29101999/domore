@@ -10,14 +10,14 @@
                             <div class="row">
                                 <div class="col-xl-8 col-lg-11 col-md-12">
                                     <div class="hero__caption hero__caption2">
-                                        <h1 data-animation="bounceIn" data-delay="0.2s">Your profile</h1>
+                                        <h1 data-animation="bounceIn" data-delay="0.2s">プロフィール</h1>
                                         <!-- breadcrumb Start-->
                                         <nav aria-label="breadcrumb">
                                             <ol class="breadcrumb">
-                                                <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">Home</a></li>
+                                                <li class="breadcrumb-item"><a href="{{ URL::to('/') }}">ホーム</a></li>
                                                 <li class="breadcrumb-item"><a
-                                                        href="{{ URL::to('users/' . auth()->user()->user_id . '/posts') }}">Your
-                                                        Posts</a></li>
+                                                        href="{{ URL::to('users/' . auth()->user()->user_id . '/posts') }}">あなたの投稿
+                                                    </a></li>
                                             </ol>
                                         </nav>
                                         <!-- breadcrumb End -->
@@ -44,9 +44,9 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="tabbable">
-                                                        <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);">
+                                                        <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
                                                             <div id="edit-basic" class="tab-pane in active">
-                                                                <h4 class="header blue bolder smaller">General</h4>
+                                                                <h4 class="header blue bolder smaller">全般的</h4>
 
                                                                 <div class="row">
                                                                     @if ($user->avatar_url != null)
@@ -70,7 +70,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-username">Username</label>
+                                                                        for="form-field-username">ユーザー名</label>
 
                                                                     <div class="col-sm-9">
                                                                         <input type="text" id="form-field-username"
@@ -140,7 +140,7 @@
                                                                 <hr />
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-date">Birth Date</label>
+                                                                        for="form-field-date">誕生日</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -157,20 +157,21 @@
 
                                                                 <div class="form-group">
                                                                     <label
-                                                                        class="col-sm-3 control-label no-padding-right">Gender</label>
+                                                                        class="col-sm-3 control-label no-padding-right">性別</label>
                                                                     <div class="col-sm-9">
                                                                         <input type="radio" name="gender" value="Male"
-                                                                            {{ $user->gender == 'Male' ? 'checked' : '' }}>Male
+                                                                            {{ $user->gender == 'Male' ? 'checked' : '' }}>男
+
                                                                         <input type="radio" name="gender" value="Female"
-                                                                            {{ $user->gender == 'Female' ? 'checked' : '' }}>Female
+                                                                            {{ $user->gender == 'Female' ? 'checked' : '' }}>女性
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="space"></div>
-                                                                <h4 class="header blue bolder smaller">Contact</h4>
+                                                                <h4 class="header blue bolder smaller">コンタクト</h4>
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-email">Email</label>
+                                                                        for="form-field-email">メール</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -186,7 +187,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-website">Address</label>
+                                                                        for="form-field-website">住所</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -202,7 +203,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-phone">Phone</label>
+                                                                        for="form-field-phone">電話番号</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -225,15 +226,14 @@
 
                                                                 <div class="space"></div>
 
-                                                                <h4 class="header blue bolder smaller">Password</h4>
+                                                                <h4 class="header blue bolder smaller">パスワード</h4>
                                                                 <div id="edit-password" class="tab-pane">
                                                                     <div class="space-10"></div>
 
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass0">Current
-                                                                            Password</label>
+                                                                            for="form-field-pass0">現在のパスワード</label>
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass0"
                                                                                 name="pass0">
@@ -245,8 +245,7 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass1">New
-                                                                            Password</label>
+                                                                            for="form-field-pass1">新しいパスワード</label>
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass1"
                                                                                 name="pass1">
@@ -258,8 +257,7 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass2">Confirm
-                                                                            Password</label>
+                                                                            for="form-field-pass2">パスワードを認証する</label>
 
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass2"
@@ -274,12 +272,12 @@
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <button class="btn btn-info" type="submit">
                                                                             <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                            Save
+                                                                            保存する
                                                                         </button>
                                                                         &nbsp; &nbsp;
                                                                         <button class="btn" type="reset">
                                                                             <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                                            Reset
+                                                                            リセット
                                                                         </button>
 
                                                                     </div>

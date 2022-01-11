@@ -38,7 +38,7 @@
                                 echo "<h2>$title</h2>";
                                 Session::put("title",null);
                             }else{
-                                echo "<h2>Posts</h2>";
+                                echo "<h2>ポスト</h2>";
                             }
                         ?>
                     </div>
