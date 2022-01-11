@@ -57,10 +57,10 @@ hr {
     
 </section>
 <!-- Courses area start -->
-<div class="courses-area section-padding40 fix">
+<div class="courses-area section-padding40 fix" >
     <div class="col-sm-12" style="margin-bottom: 50px;">
         <div class="col-sm-8 "style="left: 10%;">
-            <img src="{{asset('/user/img/hero/image1.png')}}" alt="" style="width:1000px;">
+            <img src="{{asset('/user/img/hero/image1.png')}}" alt="" style="width:1000px; ">
         </div>
         <div class="col-sm-4" style="text-align: center;">
              <a class="btn_1_1" href="{{ URL::to('create_post') }}"> 

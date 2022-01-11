@@ -44,7 +44,7 @@
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="tabbable">
-                                                        <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);">
+                                                        <div class="tab-content profile-edit-tab-content" style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
                                                             <div id="edit-basic" class="tab-pane in active">
                                                                 <h4 class="header blue bolder smaller">General</h4>
 
