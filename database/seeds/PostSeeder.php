@@ -14,7 +14,6 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert([
             'user_id' => 1,
-
             'title' => "DOMORE Project",
             'content' => "# Domore - 赤黒チーム
             > チームのメンバー：

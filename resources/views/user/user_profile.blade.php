@@ -4,7 +4,7 @@
 <style>
 .center {
     margin: 0 auto;
-    width: 60%; 
+    width: 60%;
     background: lightpink;
     padding: 5px;
     border-radius: 10px;
@@ -12,7 +12,7 @@
 }
 </style>
     <!--? slider Area Start-->
-    <section class="slider-area slider-area2">
+    {{-- <section class="slider-area slider-area2">
         <div class="slider-active">
             <!-- Single Slider -->
             <div class="single-slider slider-height2">
@@ -37,11 +37,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
         <!-- Courses area start -->
-        <div class="main-container ace-save-state" id="main-container">
+        <div class="main-container ace-save-state pt-120" id="main-container">
         <div class="main-content">
             <div class="main-content-inner">
                 <div class="page-content">
@@ -75,7 +75,11 @@
                                                                             <img src="{{asset('/user/img/default_avt.jpg')}}">
                                                                         </div>
                                                                     @endif
+<<<<<<< HEAD
                                                                 
+=======
+
+>>>>>>> 8084c5506af14561cf07a46c428e42eb99beadff
                                                                 <div class="col-xs-12 col-sm-8" >
                                                                     <div class="form-group">
                                                                         <label
@@ -84,7 +88,7 @@
                                                                         <div class="col-sm-8"style="text-align: left;left: 20%;">
                                                                             {{ $user->user_name }}
                                                                         </div>
-      
+
                                                                     </div>
 
 
@@ -150,9 +154,15 @@
 
 
                                                                     </div>
+<<<<<<< HEAD
                                                                     
 
                                                                     
+=======
+
+
+
+>>>>>>> 8084c5506af14561cf07a46c428e42eb99beadff
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -196,7 +206,7 @@
                                                                     <div class="col-sm-4" ><p style="color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
                                                                 </div>
                                                                 <div class="space"></div>
-                                                            @endforeach                                                           
+                                                            @endforeach
                                                             <div class="space"></div>
                                                         </div>
                                                     </div>
@@ -212,5 +222,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection

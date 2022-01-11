@@ -67,7 +67,7 @@ hr {
     border: 0;
     border-top: 1px solid #ccc;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
 }
 </style>
 
@@ -76,7 +76,15 @@ hr {
       <button onclick="hamDropdown()" class="nut_dropdown" style="color:Black;">全てカテゴリー</button>
       <div class="noidung_dropdown">
       @foreach ($tags as $tag)
-        <a style="color:Black;" href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}">{{ $tag->tag_title }}</a>
+        <a
+            style="color:Black;"
+            href="{{ URL::to('/posts/tag/' . $tag->tag_id) }}"
+            @if ($tag->tag_title == $title)
+                class="drop-item active"
+            @else
+                class="drop-item"
+            @endif
+        >{{ $tag->tag_title }}</a>
       @endforeach
       </div>
     </div>
@@ -89,10 +97,10 @@ hr {
 
 
 <div class="row">
-    <div class="col-sm-8" style="">Topic</div>
-    <div class="col-sm-1" style="">Replies</div>
-    <div class="col-sm-1" style="">Like</div>
-    <div class="col-sm-1" style="text-align: center;">Date</div>
+    <div class="col-sm-8" style="">ポスト</div>
+    <div class="col-sm-1" style="">コメント</div>
+    <div class="col-sm-1" style="">いいね</div>
+    <div class="col-sm-1" style="text-align: center;">登録日</div>
 </div>
 <div class="hr"style="border: 2px solid #ccc;"></div>
 <div class="">
@@ -103,8 +111,8 @@ hr {
             <div class="des">{{$post->description}}</div>
             <a class="date" style="color: #000000;" href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> {{$post->user->user_name}}</a>
         </div>
-        <div class="col-sm-1" >Replies</div>
-        <div class="col-sm-1" style="">Like</div>
+        <div class="col-sm-1" >{{$comment_count[$post->post_id]}}</div>
+        <div class="col-sm-1" style="">{{$like_count[$post->post_id]}}</div>
         <div class="col-sm-2" style="">{{$post->date_create}}</div>
     </div>
     <hr>
@@ -115,6 +123,9 @@ hr {
 
 function hamDropdown() {
  document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+}
+if (document.getElementsByClassName("drop-item active")[0].innerHTML != "") {
+    document.getElementsByClassName("nut_dropdown")[0].innerHTML = document.getElementsByClassName("drop-item active")[0].innerHTML;
 }
 
 window.onclick = function(e) {

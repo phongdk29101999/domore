@@ -13,7 +13,6 @@ class TagSeeder extends Seeder
     public function run()
     {
         DB::table('tags')->insert([
-
             'tag_title' => '数学',
         ]);
         DB::table('tags')->insert([
@@ -35,7 +34,7 @@ class TagSeeder extends Seeder
             'tag_title' => '日本語',
         ]);
         DB::table('tags')->insert([
-            'tag_title' => '他の',
+            'tag_title' => 'その他',
         ]);
     }
 }

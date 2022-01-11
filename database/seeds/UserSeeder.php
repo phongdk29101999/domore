@@ -1,5 +1,4 @@
 <?php
-
 // phpcs:disable
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +21,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
             'gender' => 'male',
             'birthday' => date('Y-m-d H:i:s',mt_rand(1, 2147385600)),
-
             'email' => 'test1@example.com',
             'phone' => '0123456789',
             'address' => Str::random(20),
@@ -41,7 +39,6 @@ class UserSeeder extends Seeder
             'job' => Str::random(10),
         ]);
         DB::table('users')->insert([
-
             'first_name' => 'Aka',
             'last_name' => 'Kuro',
             'user_name' => 'admin ',
