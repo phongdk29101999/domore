@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <div class="form-group" >
-                    <button type="submit" class="button button-contactForm btn_1 boxed-btn" style="background-color: #C3EF13;">ポースト</button>
+                    <button type="submit" class="button button-contactForm btn_1_1 boxed-btn" style="">ポースト</button>
                 </div>
             </form>
         </div>
