@@ -212,7 +212,7 @@
               </div>
             </div>
             <div class="form-group">
-              <button type="submit" class="button button-contactForm btn_1 boxed-btn">コメントする</button>
+              <button type="submit" class="button button-contactForm btn_1_1 boxed-btn">コメントする</button>
             </div>
           </form>
         </div>

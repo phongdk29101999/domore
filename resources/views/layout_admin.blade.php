@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <a class="navbar-brand mr-1" href={{ URL::to('/home-page') }}>Home Page</a>
+        <a class="navbar-brand mr-1" href={{ URL::to('/home-page') }}>ホームページ</a>
 
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
@@ -46,14 +46,13 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">Home page</a>
+                    <a class="dropdown-item" href="{{ URL::to('/home-page') }}">ホームページ</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">Profile</a>
+                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id) }}">プロフィール</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">Edit
-                        profile</a>
+                    <a class="dropdown-item" href="{{ URL::to('users/' . auth()->user()->user_id . '/edit') }}">プロフィール編集</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ URL::to('logout') }}">Logout</a>
+                    <a class="dropdown-item" href="{{ URL::to('logout') }}">ログアウト</a>
                 </div>
             </li>
         </ul>
@@ -67,25 +66,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/home-page">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Admin Page</span>
+                    <span>管理ページ</span>
                 </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Manage</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Admin Profile:</h6>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) }}>View Profile</a>
-                    <a class="dropdown-item" href={{ URL::to('/users/' . auth()->user()->user_id) . '/edit' }}>Edit
-                        Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Actions:</h6>
-                    <a class="dropdown-item" href={{URL::to('/tags/new')}}>Add tags</a>
-                    {{-- <a class="dropdown-item" href="blank.html">Blank Page</a> --}}
-                </div>
             </li>
             {{-- <li class="nav-item">
                 <a class="nav-link" href="charts.html">
@@ -106,7 +88,7 @@
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright © Your Website 2019</span>
+                        <span></span>
                     </div>
                 </div>
             </footer>

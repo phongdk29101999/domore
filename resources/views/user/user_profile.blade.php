@@ -135,11 +135,11 @@
                                                                             {{ $user->address }}
                                                                         </div>
                                                                     </div>
-
+                                                                    
                                                                     <div class="form-group">
-                                                                        <label
+                                                                        <a href="{{ URL::to('users/' .$user->user_id . '/posts') }}"
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-lastname" style="font-weight: bold;"> 2ポスト</label>
+                                                                            for="form-field-lastname" style="font-weight: bold;"> {{count($posts)}}ポスト</a>
                                                                         <label
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;">15 フォロワー</label>
@@ -155,49 +155,6 @@
 
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-container ace-save-state" id="main-container">
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="section-tittle text-center mb-55">
-                                <div>
-                                    <div id="user-profile-3" class="user-profile row">
-                                        <div class="col-sm-offset-1 col-sm-10">
-                                            <div class="space"></div>
-                                            <form class="form-horizontal">
-                                                <div class="tabbable">
-                                                    <div class="tab-content profile-edit-tab-content rounded"style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
-                                                        <div id="edit-basc" class="tab-pane in active">
-                                                            <div class="space"></div>
-
-                                                            <div class="space"></div>
-                                                            <div style="font-weight: bold;font-size:30px;">ポストリスト</div>
-                                                            <div class="space"></div>
-                                                            @foreach($posts as $post)
-                                                                <div class="row center" style="">
-                                                                    <div class="col-sm-8" ><a style="color: #B22222;" href="{{URL::to('/posts/'.$post->post_id)}}">{{$post->title}}</a></div>
-                                                                    <div class="col-sm-4" ><p style="color: #B22222;text-align: left;">{{$post->date_create}}</p></div>
-                                                                </div>
-                                                                <div class="space"></div>
-                                                            @endforeach
-                                                            <div class="space"></div>
                                                         </div>
                                                     </div>
                                                 </div>
