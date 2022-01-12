@@ -9,12 +9,12 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">All {{$user->user_name}}'s posts</h1>
+                            <h1 data-animation="bounceIn" data-delay="0.2s"> {{$user->user_name}}の 全てのポスト</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">All post</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/')}}">ホーム</a></li>
+                                        <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">全てのポスト</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -27,7 +27,7 @@
     </section>
 
     <!-- Courses area start -->
-    <div class="courses-area section-padding40 fix">
+    <div class="courses-area section-padding40 fix" style="background-color: lightgrey;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
@@ -38,7 +38,7 @@
                                 echo "<h2>$title</h2>";
                                 Session::put("title",null);
                             }else{
-                                echo "<h2>Posts</h2>";
+                                echo "<h2>ポスト</h2>";
                             }
                         ?>
                     </div>
@@ -50,11 +50,11 @@
                     @foreach($posts as $post)
                         <div class="col-lg-4">
                             <div class="properties properties2 mb-30">
-                                <div class="properties__card">
+                                <div class="properties__card" style="background-color: #fff;">
                                     <div class="properties__caption">
                                         <h3>{{$post->title}}</h3>
                                         <p>{{$post->description}}</p>
-                                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
+                                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">もっと見る</a>
                                     </div>
                                 </div>
                             </div>

@@ -6007,7 +6007,7 @@ ul.submenu {
 .popup_modal {
     -webkit-backdrop-filter: unset;
     position: absolute;
-    top: 22%;
+    top: 30%;
     left: 80%;
     width: 480px;
     padding: 45px;

@@ -61,30 +61,31 @@ hr {
                         <div class="hero__caption hero__caption2">
                             <div class="row">
                                 <div class="col-sm-8"><h1 data-animation="bounceIn" data-delay="0.2s"><img src="{{asset('/user/img/hero/image1.png')}}" alt="" ></h1></div>
-
-                                <div class="col-sm-4">
-                                    <a class="btn_1_1" href="{{ URL::to('create_post') }}" > 投稿しましょう！</a>
-                                </div>
+                              @if (Auth::user())
+                                @if (Auth::user()->admin == 1)
+                                  <div class="col-sm-4">
+                                     
+                                  </div>
+                                  @else
+                                  <div class="col-sm-4">
+                                      <a class="btn_1_1" href="{{ URL::to('create_post') }}" > 投稿しましょう！</a>
+                                  </div>
+                                @endif
+                              @else
+                              <div class="col-sm-4">
+                                      <a class="btn_1_1" href="{{ URL::to('create_post') }}" > 投稿しましょう！</a>
+                                  </div>
+                                @endif
                                 </div>
 
                         </div>
             </div>
         </div>
+       
     </div>
 </section>
 <!-- Courses area start -->
 <div class="courses-area fix">
-    {{-- <div class="col-sm-12" style="margin-bottom: 50px;">
-        <div class="col-sm-8 "style="left: 10%;">
-            <img src="{{asset('/user/img/hero/image1.png')}}" alt="" style="width:1000px;">
-        </div>
-        <div class="col-sm-4" style="text-align: center;">
-             <a class="btn_1_1" href="{{ URL::to('create_post') }}">
-                投稿しましょう！
-            </a>
-        </div>
-
-    </div> --}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-8">

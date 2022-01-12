@@ -81,7 +81,7 @@
   </div>
   <div class="popup_modal" style="display:none">
     <a href="#"  class="title">通知</a>
-    <h4 class="close">X 閉じる</h4>
+    <h2 class="close">X</h2>
     <div class="button">
       <button class="btn_ntc" style="margin-right: 10px;">全て</button>
       <button class="btn_ntc">未読</button>
@@ -162,10 +162,7 @@
                   <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                     <nav>
                       <ul id="navigation" class="d-flex justify-content-end align-items-center">
-                        <li class="active"><a
-                            href="{{ URL::to('/home-page') }}">ホーム</a></li>
-                        <li><a href="{{ URL::to('/posts') }}">ポスト</a></li>
-                        <li><a href="{{ URL::to('create_post') }}">作成</a></li>
+                       
                         <!-- <li><a href="#">カテゴリー</a>
                           <ul class="submenu">
                             @foreach ($tags as $tag)
@@ -175,13 +172,17 @@
                             @endforeach
                           </ul>
                         </li> -->
-
                         @if (Auth::user())
                           @if (Auth::user()->admin)
                             <li>
                               <a href="{{ URL::to('admin/home-page') }}">こんにちは、admin!!</a>
                             </li>
                           @else
+                            <li class="active"><a
+                              href="{{ URL::to('/home-page') }}">ホーム</a></li>
+                            <!-- <li><a href="{{ URL::to('/posts') }}">ポスト</a></li> -->
+                            <li><a href="{{ URL::to('/posts') }}">フォロイング</a></li>
+                            <li><a href="{{ URL::to('create_post') }}">作成</a></li>
                             <li>
                               <a href="{{ URL::to('users/' . Auth::user()->user_id) }}">こんにちは、{{ Auth::user()->user_name }}さん !!</a>
                             </li>
@@ -200,16 +201,19 @@
                                 <img src="{{ asset('/user/img/default_avt.jpg') }}">
                             @endif
                             <ul class="submenu">
-                              <li>
-                                  <a href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィール</a>
-                              </li>
-                              <li>
-                                <a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a>
-                              </li>
+                              
                               @if (auth()->user()->admin)
                                 <li><a href="{{ URL::to('admin/home-page') }}">管理ページ</a></li>
+                                @else
+                                  <li>
+                                    <a href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィール</a>
+                                  </li>
+                                  <li>
+                                    <a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a>
+                                  </li>
+                                  <li><a href="{{ URL::to('/my-posts') }}">私のポスト</a></li>
                               @endif
-                              <li><a href="{{ URL::to('/my-posts') }}">私のポスト</a></li>
+                              
                               <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
                             </ul>
                           </li>
