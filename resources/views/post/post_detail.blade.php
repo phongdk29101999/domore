@@ -173,41 +173,50 @@
                 </div>
 
                </div>
-               <div class="comment_rep d-flex">
-                 <div class="thumb">
-                  @if($comment->avatar_url == null)
-                  <div class="rep_cmt-ava">
-                    <img style="height: 100%;" src="{{asset('/user/img/default_avt.jpg')}}">
-                  </div>
-                  @else
-                  <div class="rep_cmt-ava">
-                    <img style="height: 100%;" src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
-                  </div>
+               @foreach ($comments_reply as $comment_reply)
+                  @if ($comment_reply->reply_of == $comment->comment_id)
+                    <div class="comment_rep d-flex">
+                      <div class="thumb">
+                      @if($comment_reply->avatar_url == null)
+                      <div class="rep_cmt-ava">
+                        <img style="height: 100%;" src="{{asset('/user/img/default_avt.jpg')}}">
+                      </div>
+                      @else
+                      <div class="rep_cmt-ava">
+                        <img style="height: 100%;" src="{{URL::to('/storage/avatar_url/'.$comment_reply->avatar_url)}}" alt="author avatar">
+                      </div>
+                      @endif
+                      </div>
+                      <div class="desc">
+                      <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                          <h5>
+                            <a href="#" style="font-size: 21px;">{{$comment_reply->user_name}}</a>
+                            <div style="color:Black;">{{$comment_reply->first_name}}</div>
+                            <div style="color:Black;">{{$comment_reply->last_name}}</div>
+                          </h5>
+                          </div>
+                      </div>
+                      <p class="comment">
+                        {{$comment_reply->content}}
+                      </p>
+                      </div>
+                      @if (Auth::user()->user_id == $comment->user_id)
+                      <a href="#" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                      @endif
+                    </div>
                   @endif
-                 </div>
-                 <div class="desc">
-                  <div class="d-flex justify-content-between">
-                     <div class="d-flex align-items-center">
-                      <h5>
-                       <a href="#" style="font-size: 21px;">Tên của người rep cmt</a>
-                       <div style="color:Black;">Thông tin trường fisrt name </div>
-                       <div style="color:Black;">Thông tin trường last name</div>
-                      </h5>
-                     </div>
-                  </div>
-                  <p class="comment">
-                    Comment reply
-                  </p>
-                 </div>
-                 @if (Auth::user()->user_id == $comment->user_id)
-                  <a href="#" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
-                @endif
-                </div>
+               @endforeach
 
                <div class="rep_comment" style="display: none;">
-                  <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
-                  <input id="comment_reply" type="text" class="form-input" name="comment_reply" placeholder="コメントを書く">
-                  <button type="submit" class="button_rep_comment ">コメントする</button>
+                  <form action="{{URL::to('/posts/{$post->post_id}/comment')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="post_id" value='{{$post->post_id}}'>
+                    <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
+                    <input type="hidden" name="comment_id" value="{{$comment->comment_id}}">
+                    <input id="comment_reply" type="text" class="form-input" name="content" placeholder="コメントを書く">
+                    <button type="submit" class="button_rep_comment">コメントする</button>
+                  </form>
                </div>
 
             </div>
