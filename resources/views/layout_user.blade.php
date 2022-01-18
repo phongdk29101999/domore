@@ -211,7 +211,7 @@
                                   <li>
                                     <a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a>
                                   </li>
-                                  <li><a href="{{ URL::to('/my-posts') }}">私のポスト</a></li>
+                      
                               @endif
                               
                               <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
