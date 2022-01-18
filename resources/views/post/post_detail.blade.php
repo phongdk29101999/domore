@@ -68,7 +68,7 @@
                 @endif
                   <div class="col-sm-8" >
                     <div class="form-group" >
-                      <div class="col-sm-8"  > 
+                      <div class="col-sm-8"  >
                         <a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a>
                       </div>
                     <div class="col-sm-8">
@@ -161,18 +161,18 @@
                  </div>
                 </div>
                 <div class="item_cmt">
-              
+
                 @if (Auth::user()->user_id == $comment->user_id)
                   <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
                 @endif
                 <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a>
                 <a class="click_to_repcmt" href="javascript:void(0)" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
-                
-               
-                  
+
+
+
                 </div>
-                
-               </div> 
+
+               </div>
                <div class="comment_rep d-flex">
                  <div class="thumb">
                   @if($comment->avatar_url == null)
@@ -205,11 +205,11 @@
                 </div>
 
                <div class="rep_comment" style="display: none;">
-                  <input type="hidden" name="user_id" value="{{$current_user->user_id}}"> 
+                  <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
                   <input id="comment_reply" type="text" class="form-input" name="comment_reply" placeholder="コメントを書く">
                   <button type="submit" class="button_rep_comment ">コメントする</button>
                </div>
-                
+
             </div>
             @endforeach
             <p>{{$comments->links()}}</p>

@@ -27,7 +27,7 @@ class PostController extends Controller
     # Get all post
     function all_post(Request $request)
     {
-        $posts = Post::paginate(3);
+        $posts = Post::where("posts.isPublic", "=", true)->paginate(3);
         $comment_count = array();
         $like_count = array();
         $title = "Posts";
@@ -157,6 +157,10 @@ class PostController extends Controller
                 $post->post_url = $filenameToStore;
             }
 
+            if (isset($request->isPrivate)) {
+                $post->isPublic = false;
+            }
+
             $post->content = $request->detail_content;
             $post->description = $request->description;
             $post->date_create = date('Y-m-d');
@@ -174,7 +178,7 @@ class PostController extends Controller
     }
 
     # Edit post
-    public function edit(Request $request,$post_id){
+    public function edit(Request $request, $post_id) {
         $post = Post::find($post_id);
         if($post == null){
             return view('error.error')->with('code',404)->with('message','Post id not found');
@@ -192,6 +196,7 @@ class PostController extends Controller
         if ($request->isMethod('post')) {
             $post = Post::find($post_id);
             $post->title = $request->title;
+            $post->isPublic = true;
 
             if ($request->hasFile('post_url')) {
                 $filenameWithExt = $request->file('post_url')->getClientOriginalName();
@@ -200,6 +205,10 @@ class PostController extends Controller
                 $filenameToStore = $filename . '_' . time() . '.' . $extension;
                 $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
                 $post->post_url = $filenameToStore;
+            }
+
+            if (isset($request->isPrivate)) {
+                $post->isPublic = false;
             }
 
             $post->content = $request->detail_content;

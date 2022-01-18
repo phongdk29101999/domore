@@ -35,7 +35,7 @@ class HomeController extends AdminController
     public function homepage(){
         $comment_count = array();
         $like_count = array();
-        $posts = Post::orderBy('post_id', 'DESC')->get();
+        $posts = Post::where("isPublic", "=", true)->orderBy('post_id', 'DESC')->get();
         if ($posts->count() !== 0) {
             foreach ($posts as $post) {
                 $comment_count[$post->post_id] = DB::table('comments')

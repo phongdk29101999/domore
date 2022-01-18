@@ -11,15 +11,14 @@
   <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/user/img/favicon.ico') }}">
 
   <!-- bootstrap & fontawesome -->
-  <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- text fonts -->
   <link rel="stylesheet" href="{{ asset('/profile/css/fonts.googleapis.com.css') }}" />
 
   <!-- ace styles -->
-  <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet"
-    id="main-ace-style" />
+  <link rel="stylesheet" href="{{ asset('/profile/css/ace.min.css') }}" class="ace-main-stylesheet" id="main-ace-style" />
 
   <link rel="stylesheet" href="{{ asset('/profile/css/ace-skins.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('/profile/css/ace-rtl.min.css') }}" />
@@ -33,7 +32,7 @@
   <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap-editable.min.css') }}" />
 
   <!-- CSS here -->
-  <link rel="stylesheet" href="{{ asset('/user/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('/user/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('/user/css/slicknav.css') }}">
   <link rel="stylesheet" href="{{ asset('/user/css/flaticon.css') }}">

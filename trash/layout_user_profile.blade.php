@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{ asset('/profile/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/profile/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="{{ asset('/profile/css/jquery-ui.custom.min.css') }}" />
@@ -50,7 +50,7 @@
     <![endif]-->
 
     <!--Css for header-->
-    <link rel="stylesheet" href="{{ asset('/user/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/user/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/user/css/slicknav.css') }}">
     <link rel="stylesheet" href="{{ asset('/user/css/flaticon.css') }}">
