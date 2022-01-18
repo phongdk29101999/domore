@@ -3,7 +3,7 @@
 <!--? slider Area Start-->
 
 <section class="slider-area slider-area2">
-    
+
 </section>
 
 <div class="container">
@@ -14,25 +14,24 @@
                 {{ csrf_field() }}
                 <div class="row">
 
-                    <div class="col-sm-4">
-                        <div class="form-group">
+                    <div class="col-sm-6 d-flex">
+                        <div class="form-group col-9 my-auto">
                             <input class="form-control" name="title" id="title" type="text" placeholder="タイトル">
                             @error('title')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
                         </div>
+                        <label class="checkbox-inline my-auto"><input type="checkbox" name="isPrivate" id="isPrivate" value="private">自分のみ</label>
                     </div>
 
                     <div class="col-sm-8">
                         <div class="col-xs-12 " style="display: flex;">
-                            <img src="{{ asset('/user/img/logo/Vector.png') }}" alt="">
+                            {{-- <img src="{{ asset('/user/img/logo/Vector.png') }}" alt="">
                             <label for="post_url" class="btn btn3 custom-file-upload">
                                 画像をアップロード
-                            </label>
-                            <input type="file" name="post_url" class="file-upload" id="post_url">
-                            <a href="#"  class="chose_option" style="margin-left: 10px;">
-                                誰がこのポストを見ることができますか?
-                            </a>
+                            </label> --}}
+                            {{-- <input type="file" name="post_url" class="file-upload" id="post_url"> --}}
+
                             <div class="popup_chose" style="display:none">
                                 <a href="#" style="margin-left: 10px;" class="close_chose"><img src="{{asset('/user/img/hero/muiten.png')}}"></a>
                                 <a href="#"  class="title" style="margin-left: 60px;">オブジェクトを選択</a>

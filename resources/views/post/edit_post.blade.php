@@ -33,10 +33,11 @@
                 <form class="form-contact comment_form" action="{{URL::to('/edit/'.$post->post_id)}}" id="commentForm" method="post" enctype="multipart/form-data" onsubmit="return validateData()">
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
+                        <div class="col-sm-6 d-flex">
+                            <div class="form-group col-9 my-auto">
                                 <input class="form-control" name="title" id="title" type="text" placeholder="Title" value="{{$post->title}}" >
                             </div>
+                            <label class="checkbox-inline my-auto"><input type="checkbox" name="isPrivate" id="isPrivate" <?= $post->isPublic == false ? "checked": "" ?> value="private">自分のみ</label>
                         </div>
 
                         {{-- <div class="col-sm-4">
