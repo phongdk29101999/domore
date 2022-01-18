@@ -112,7 +112,7 @@
                     url: post_id + "/react",
                     success: function(data) {
                       console.log(data);
-                      $('.count-like').html(data + " people like this");
+                      $('.count-like').html(data + "ポストが気に入りました");
                     }
                   });
                 }

@@ -27,7 +27,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
                     <div class="section-tittle text-center">
-                        <h2>{{$title}}</h2>
+                        <h2> フォローイングのポスト</h2>
                     </div>
                 </div>
             </div>
