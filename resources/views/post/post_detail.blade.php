@@ -52,20 +52,36 @@
             <div class="row">
                 <h2 style="color: #2d2d2d;" class="col-xl-10 col-lg-10">
                     {{$post->title}}
-                  </h2>
-                  @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
-                      {{-- <nav aria-label="breadcrumb"> --}}
-                        <ol class="breadcrumb col-xl-2 col-lg-2 justify-content-end">
-                          @if($current_user->user_id == $post->user->user_id)
-                          <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}"><i class="fas fa-pencil-alt"></i></a></li>
-                          @endif
-                          <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}"><i class="fas fa-trash-alt"></i></a></li>
-                        </ol>
-                      {{-- </nav> --}}
-                    @endif
+                </h2>
+
+                <div class="row">
+
+                @if ($post->user->avatar_url != null)
+                  <div class="block-ava" style="position: absolute; bottom:0; left:0;">
+                    <img src="{{asset('storage/avatar_url/'.$post->user->avatar_url)}}">
+                  </div>
+                      {{-- <div class="vspace-12-sm"></div> --}}
+                @else
+                  <div class="block-ava">
+                    <img src="{{asset('/user/img/default_avt.jpg')}}">
+                  </div>
+                @endif
+                  <div class="col-sm-8" >
+                    <div class="form-group" >
+                      <div class="col-sm-8"  > 
+                        <a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a>
+                      </div>
+                    <div class="col-sm-8">
+                      {{ $post->user->first_name }}
+                    </div>
+                    <div class="col-sm-8">
+                      {{ $post->user->last_name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
                 <ul class="blog-info-link mx-3 mt-3 mb-4 row">
-                    <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
                     <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                     <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                     <li class="like-info">
@@ -134,6 +150,8 @@
                      <div class="d-flex align-items-center">
                       <h5>
                        <a href="{{ URL::to('users/' . $post->user->user_id) }}" style="font-size: 21px;">{{$comment->user_name}}</a>
+                       <div style="color:Black;">sinh vien nam </div>
+                       <div style="color:Black;">Truong</div>
                       </h5>
                      </div>
                   </div>
