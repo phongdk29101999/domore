@@ -27,7 +27,7 @@ class PostController extends Controller
     # Get all post
     function all_post(Request $request)
     {
-        $posts = Post::paginate(3);
+        $posts = Post::where("posts.isPublic", "=", true)->paginate(3);
         $comment_count = array();
         $like_count = array();
         $title = "Posts";
@@ -50,8 +50,8 @@ class PostController extends Controller
     public function post_detail($post_id)
     {
         $post = Post::find($post_id);
-        if($post === null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post === null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
         $recent_posts = Post::where('post_id', '!=', $post_id)->orderBy('date_create', 'desc')->take(3)->get();
 
@@ -64,9 +64,17 @@ class PostController extends Controller
             ->join('posts', 'comments.post_id', '=', 'posts.post_id')
             ->join('users', 'comments.user_id', '=', 'users.user_id')
             ->where('posts.post_id', '=', $post_id)
-            ->select('comments.content', 'users.user_name', 'users.avatar_url')
+            ->whereNull('comments.reply_of')
+            ->select('comments.comment_id', 'comments.user_id', 'comments.content', 'users.user_name', 'users.avatar_url', 'users.first_name', 'users.last_name')
+            ->orderBy('comments.comment_id', 'asc')
             ->paginate(5);
-
+        $comments_reply = DB::table('comments')
+        ->join('posts', 'comments.post_id', '=', 'posts.post_id')
+        ->join('users', 'comments.user_id', '=', 'users.user_id')
+        ->where('posts.post_id', '=', $post_id)
+        ->whereNotNull('comments.reply_of')
+        ->select('comments.comment_id', 'comments.user_id', 'comments.content', 'comments.reply_of', 'users.user_name', 'users.avatar_url', 'users.first_name', 'users.last_name')
+        ->paginate(5);
 
         $current_user = User::find(auth()->user()->user_id);
         $search_user_post = DB::table('user_post_like')->where('user_id', $current_user->user_id)->where('post_id', $post_id)->first();
@@ -93,6 +101,7 @@ class PostController extends Controller
             'recent_posts',
             'comment_count',
             'comments',
+            'comments_reply',
             'current_user',
             'search_user_post',
             'count_like',
@@ -158,6 +167,10 @@ class PostController extends Controller
                 $post->post_url = $filenameToStore;
             }
 
+            if (isset($request->isPrivate)) {
+                $post->isPublic = false;
+            }
+
             $post->content = $request->detail_content;
             $post->description = $request->description;
             $post->date_create = date('Y-m-d');
@@ -175,12 +188,13 @@ class PostController extends Controller
     }
 
     # Edit post
-    public function edit(Request $request,$post_id){
+    public function edit(Request $request, $post_id)
+    {
         $post = Post::find($post_id);
-        if($post == null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
-        if($this->require_same_user($post_id) == FALSE){
+        if ($this->require_same_user($post_id) == false) {
             return redirect('/');
         }
 
@@ -193,6 +207,7 @@ class PostController extends Controller
         if ($request->isMethod('post')) {
             $post = Post::find($post_id);
             $post->title = $request->title;
+            $post->isPublic = true;
 
             if ($request->hasFile('post_url')) {
                 $filenameWithExt = $request->file('post_url')->getClientOriginalName();
@@ -201,6 +216,10 @@ class PostController extends Controller
                 $filenameToStore = $filename . '_' . time() . '.' . $extension;
                 $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
                 $post->post_url = $filenameToStore;
+            }
+
+            if (isset($request->isPrivate)) {
+                $post->isPublic = false;
             }
 
             $post->content = $request->detail_content;
@@ -249,17 +268,21 @@ class PostController extends Controller
             $dataa["post_id"] = $request->post_id;
             $dataa["user_id"] = $request->user_id;
             $dataa["content"] = $request->content;
+            if (isset($request->comment_id)) {
+                $dataa["reply_of"] = $request->comment_id;
+            }
             DB::table("comments")->insert($dataa);
         }
         return redirect("/posts/{$request->post_id}");
     }
-    public function require_same_user($post_id){
+    public function require_same_user($post_id)
+    {
         $post = Post::find($post_id);
         $post_user = $post->user;
-        if(auth()->user() == $post_user){
-            return TRUE;
-        }else{
-            return FALSE;
+        if (auth()->user() == $post_user) {
+            return true;
+        } else {
+            return false;
         }
     }
 

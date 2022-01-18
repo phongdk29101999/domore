@@ -52,20 +52,36 @@
             <div class="row">
                 <h2 style="color: #2d2d2d;" class="col-xl-10 col-lg-10">
                     {{$post->title}}
-                  </h2>
-                  @if(($current_user->user_id == $post->user->user_id) or ($current_user->admin))
-                      {{-- <nav aria-label="breadcrumb"> --}}
-                        <ol class="breadcrumb col-xl-2 col-lg-2 justify-content-end">
-                          @if($current_user->user_id == $post->user->user_id)
-                          <li class="breadcrumb-item"><a href="{{URL::to('/edit/'.$post->post_id)}}"><i class="fas fa-pencil-alt"></i></a></li>
-                          @endif
-                          <li class="breadcrumb-item"><a href="{{URL::to('/posts/delete/'.$post->post_id)}}"><i class="fas fa-trash-alt"></i></a></li>
-                        </ol>
-                      {{-- </nav> --}}
-                    @endif
+                </h2>
+
+                <div class="row">
+
+                @if ($post->user->avatar_url != null)
+                  <div class="block-ava" style="position: absolute; bottom:0; left:0;">
+                    <img src="{{asset('storage/avatar_url/'.$post->user->avatar_url)}}">
+                  </div>
+                      {{-- <div class="vspace-12-sm"></div> --}}
+                @else
+                  <div class="block-ava">
+                    <img src="{{asset('/user/img/default_avt.jpg')}}">
+                  </div>
+                @endif
+                  <div class="col-sm-8" >
+                    <div class="form-group" >
+                      <div class="col-sm-8"  >
+                        <a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a>
+                      </div>
+                    <div class="col-sm-8">
+                      {{ $post->user->first_name }}
+                    </div>
+                    <div class="col-sm-8">
+                      {{ $post->user->last_name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
                 <ul class="blog-info-link mx-3 mt-3 mb-4 row">
-                    <li><a href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i>{{$post->user->user_name}}</a></li>
                     <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
                     <li><a href="#"><i class="far fa-calendar"></i> {{$post->date_create}} </a></li>
                     <li class="like-info">
@@ -134,6 +150,8 @@
                      <div class="d-flex align-items-center">
                       <h5>
                        <a href="{{ URL::to('users/' . $post->user->user_id) }}" style="font-size: 21px;">{{$comment->user_name}}</a>
+                       <div style="color:Black;">{{ $comment->first_name }}</div>
+                       <div style="color:Black;">{{ $comment->last_name }}</div>
                       </h5>
                      </div>
                   </div>
@@ -143,12 +161,64 @@
                  </div>
                 </div>
                 <div class="item_cmt">
-                <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+
+                @if (Auth::user()->user_id == $comment->user_id)
+                  <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                @endif
                 <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a>
-                <a href="#" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
-               
+                <a class="click_to_repcmt" href="javascript:void(0)" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
+
+
+
                 </div>
+
                </div>
+               @foreach ($comments_reply as $comment_reply)
+                  @if ($comment_reply->reply_of == $comment->comment_id)
+                    <div class="comment_rep d-flex">
+                      <div class="thumb">
+                      @if($comment_reply->avatar_url == null)
+                      <div class="rep_cmt-ava">
+                        <img style="height: 100%;" src="{{asset('/user/img/default_avt.jpg')}}">
+                      </div>
+                      @else
+                      <div class="rep_cmt-ava">
+                        <img style="height: 100%;" src="{{URL::to('/storage/avatar_url/'.$comment_reply->avatar_url)}}" alt="author avatar">
+                      </div>
+                      @endif
+                      </div>
+                      <div class="desc">
+                      <div class="d-flex justify-content-between">
+                          <div class="d-flex align-items-center">
+                          <h5>
+                            <a href="#" style="font-size: 21px;">{{$comment_reply->user_name}}</a>
+                            <div style="color:Black;">{{$comment_reply->first_name}}</div>
+                            <div style="color:Black;">{{$comment_reply->last_name}}</div>
+                          </h5>
+                          </div>
+                      </div>
+                      <p class="comment">
+                        {{$comment_reply->content}}
+                      </p>
+                      </div>
+                      @if (Auth::user()->user_id == $comment->user_id)
+                      <a href="#" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                      @endif
+                    </div>
+                  @endif
+               @endforeach
+
+               <div class="rep_comment" style="display: none;">
+                  <form action="{{URL::to('/posts/{$post->post_id}/comment')}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="post_id" value='{{$post->post_id}}'>
+                    <input type="hidden" name="user_id" value="{{$current_user->user_id}}">
+                    <input type="hidden" name="comment_id" value="{{$comment->comment_id}}">
+                    <input id="comment_reply" type="text" class="form-input" name="content" placeholder="コメントを書く">
+                    <button type="submit" class="button_rep_comment">コメントする</button>
+                  </form>
+               </div>
+
             </div>
             @endforeach
             <p>{{$comments->links()}}</p>

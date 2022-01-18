@@ -21,7 +21,8 @@ class Post extends Model implements Searchable
         'content',
         'description',
         'date_create',
-        'post_url'
+        'post_url',
+        "isPublic"
     ];
 
     public function tags(){
