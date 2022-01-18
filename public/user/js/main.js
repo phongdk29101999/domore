@@ -31,12 +31,18 @@
     $('.chose_option').on("click", function () {
       $('.popup_chose').css('display', 'block');
     });
+    $('.click_to_repcmt').on("click", function () {
+      $('.rep_comment').css('display', 'block');
+    });
 
     $('.close').on("click", function () {
       $('.popup_modal').css('display', 'none');
     });
     $('.close_chose').on("click", function () {
       $('.popup_chose').css('display', 'none');
+    });
+    $('.button_rep_comment').on("click", function () {
+      $('.rep_comment').css('display', 'none');
     });
 
     $('#back-top a').on("click", function () {

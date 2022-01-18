@@ -90,6 +90,13 @@ input[class="file-upload"] {
     border: 1px solid rgb(47, 0, 255);
     overflow: hidden;
 }
+.rep_cmt-ava{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 1px solid rgb(47, 0, 255);
+    overflow: hidden;
+}
 
 .slick-arrow i{
     padding: 15px;

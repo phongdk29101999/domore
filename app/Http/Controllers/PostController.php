@@ -64,10 +64,9 @@ class PostController extends Controller
             ->join('posts', 'comments.post_id', '=', 'posts.post_id')
             ->join('users', 'comments.user_id', '=', 'users.user_id')
             ->where('posts.post_id', '=', $post_id)
-            ->select('comments.content', 'users.user_name', 'users.avatar_url')
+            ->select('comments.user_id','comments.content', 'users.user_name', 'users.avatar_url', 'users.first_name', 'users.last_name')
             ->paginate(5);
-
-
+            
         $current_user = User::find(auth()->user()->user_id);
         $search_user_post = DB::table('user_post_like')->where('user_id', $current_user->user_id)->where('post_id', $post_id)->first();
 
