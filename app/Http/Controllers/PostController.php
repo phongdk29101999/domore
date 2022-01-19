@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Tag;
@@ -38,7 +37,10 @@ class PostController extends Controller
                     ->join('posts', 'comments.post_id', '=', 'posts.post_id')
                     ->where('posts.post_id', '=', $post->post_id)
                     ->count();
-                $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
+                $like_count[$post->post_id] = DB::table('user_post_like')
+                    ->where('post_id', $post->post_id)
+                    ->where('like_state', 1)
+                    ->count();
             }
         }
         $follows = DB::table('followers')
@@ -47,15 +49,18 @@ class PostController extends Controller
                     ->where('follow_state', 1)
                     ->get();
 
-        $user_fl = Post::join('followers','posts.user_id', '=', 'followers.follows_id')
-                ->join('users','users.user_id', '=', 'posts.user_id')
-                ->where('followers.user_id', '=', $user->user_id )
+        $user_fl = Post::join('followers', 'posts.user_id', '=', 'followers.follows_id')
+                ->join('users', 'users.user_id', '=', 'posts.user_id')
+                ->where('followers.user_id', '=', $user->user_id)
                 ->get();
 
         if ($request->ajax()) {
-            return view('post.post_data', compact('posts', 'title', 'comment_count', 'like_count','user_fl'))->render();
+            return view(
+                'post.post_data',
+                compact('posts', 'title', 'comment_count', 'like_count', 'user_fl')
+            )->render();
         }
-        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count','user_fl'));
+        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count', 'user_fl'));
     }
 
     # Get post by id
@@ -77,7 +82,11 @@ class PostController extends Controller
             ->join('users', 'comments.user_id', '=', 'users.user_id')
             ->where('posts.post_id', '=', $post_id)
             ->whereNull('comments.reply_of')
-            ->select('comments.comment_id', 'comments.user_id', 'comments.content', 'users.user_name', 'users.avatar_url', 'users.first_name', 'users.last_name')
+            ->select([
+                'comments.comment_id', 'comments.user_id', 'comments.content',
+                'users.user_name', 'users.avatar_url', 'users.first_name',
+                'users.last_name'
+            ])
             ->orderBy('comments.comment_id', 'asc')
             ->paginate(5);
         $comments_reply = DB::table('comments')
@@ -85,13 +94,23 @@ class PostController extends Controller
         ->join('users', 'comments.user_id', '=', 'users.user_id')
         ->where('posts.post_id', '=', $post_id)
         ->whereNotNull('comments.reply_of')
-        ->select('comments.comment_id', 'comments.user_id', 'comments.content', 'comments.reply_of', 'users.user_name', 'users.avatar_url', 'users.first_name', 'users.last_name')
+        ->select([
+            'comments.comment_id', 'comments.user_id', 'comments.content',
+            'comments.reply_of', 'users.user_name', 'users.avatar_url',
+            'users.first_name', 'users.last_name'
+        ])
         ->paginate(5);
 
         $current_user = User::find(auth()->user()->user_id);
-        $search_user_post = DB::table('user_post_like')->where('user_id', $current_user->user_id)->where('post_id', $post_id)->first();
+        $search_user_post = DB::table('user_post_like')
+            ->where('user_id', $current_user->user_id)
+            ->where('post_id', $post_id)
+            ->first();
 
-        $count_like = DB::table('user_post_like')->where('post_id', $post_id)->where('like_state', 1)->count();
+        $count_like = DB::table('user_post_like')
+            ->where('post_id', $post_id)
+            ->where('like_state', 1)
+            ->count();
 
         if (!$search_user_post) {
             $data = array();
@@ -99,9 +118,17 @@ class PostController extends Controller
             $data["post_id"] = $post_id;
             $data["like_state"] = 0;
             DB::table("user_post_like")->insert($data);
-            $search_user_post = DB::table('user_post_like')->where('user_id', $current_user->user_id)->where('post_id', $post_id)->select('like_state')->first();
+            $search_user_post = DB::table('user_post_like')
+                ->where('user_id', $current_user->user_id)
+                ->where('post_id', $post_id)
+                ->select('like_state')
+                ->first();
         } else {
-            $search_user_post = DB::table('user_post_like')->where('user_id', $current_user->user_id)->where('post_id', $post_id)->select('like_state')->first();
+            $search_user_post = DB::table('user_post_like')
+                ->where('user_id', $current_user->user_id)
+                ->where('post_id', $post_id)
+                ->select('like_state')
+                ->first();
         }
 
         $post_tags = Tag::whereHas('posts', function ($query) use ($post_id) {
@@ -135,12 +162,15 @@ class PostController extends Controller
                     ->join('posts', 'comments.post_id', '=', 'posts.post_id')
                     ->where('posts.post_id', '=', $post->post_id)
                     ->count();
-                $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
+                $like_count[$post->post_id] = DB::table('user_post_like')
+                    ->where('post_id', $post->post_id)
+                    ->where('like_state', 1)
+                    ->count();
             }
         }
         $tag = Tag::find($tag_id);
-        if($tag == null){
-            return view('error.error')->with('code',404)->with('message','Tag id not found');
+        if ($tag == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Tag id not found');
         }
 
         $title = strtoupper($tag->tag_title);
@@ -255,14 +285,15 @@ class PostController extends Controller
     }
 
     # Delete post
-    public function delete($post_id){
+    public function delete($post_id)
+    {
         $post = Post::find($post_id);
-        if($post == null){
-            return view('error.error')->with('code',404)->with('message','Post id not found');
+        if ($post == null) {
+            return view('error.error')->with('code', 404)->with('message', 'Post id not found');
         }
 
-        if($this->require_same_user($post_id) == FALSE){
-            if(auth()->user()->admin == FALSE){
+        if ($this->require_same_user($post_id) == false) {
+            if (auth()->user()->admin == false) {
                 return redirect('/');
             }
         }
@@ -287,6 +318,18 @@ class PostController extends Controller
         }
         return redirect("/posts/{$request->post_id}");
     }
+
+    public function editComment(Request $request)
+    {
+        if ($request->isMethod("post")) {
+            $comment = DB::table("comments")
+                ->where("comment_id", $request->comment_id)
+                ->update(["content" => $request->content]);
+            return redirect("/posts/{$request->post_id}");
+        }
+        return redirect("/");
+    }
+
     public function require_same_user($post_id)
     {
         $post = Post::find($post_id);
@@ -298,16 +341,31 @@ class PostController extends Controller
         }
     }
 
+    public function reactComment(Request $request)
+    {
+        //
+    }
+
     # Like action
     public function react(Request $request)
     {
         $post_id = $request->post_id;
         $user_id = (User::find(auth()->user()->user_id))->user_id;
-        $current_state = DB::table('user_post_like')->where('user_id', $user_id)->where('post_id', $post_id)->select('like_state')->first();
+        $current_state = DB::table('user_post_like')
+            ->where('user_id', $user_id)
+            ->where('post_id', $post_id)
+            ->select('like_state')
+            ->first();
         if ($current_state->like_state == 0) {
-            DB::table('user_post_like')->where('post_id', $post_id)->where('user_id', $user_id)->update(['like_state' => 1]);
+            DB::table('user_post_like')
+                ->where('post_id', $post_id)
+                ->where('user_id', $user_id)
+                ->update(['like_state' => 1]);
         } else {
-            DB::table('user_post_like')->where('post_id', $post_id)->where('user_id', $user_id)->update(['like_state' => 0]);
+            DB::table('user_post_like')
+                ->where('post_id', $post_id)
+                ->where('user_id', $user_id)
+                ->update(['like_state' => 0]);
         }
 
         $count_like = DB::table('user_post_like')->where('post_id', $post_id)->where('like_state', 1)->count();
@@ -339,5 +397,4 @@ class PostController extends Controller
     //     }
     //     return redirect('/posts/'.$post_id);
     // }
-
 }

@@ -12,12 +12,13 @@ use App\PostTag;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+
 #session_start();
 class AdminController extends Controller
 {
     public function index()
     {
-        if(auth()->user()->admin){
+        if (auth()->user()->admin) {
             $users = User::all();
             $posts = Post::all();
             $tags = Tag::all();
@@ -34,23 +35,22 @@ class AdminController extends Controller
                 ->with(compact('users', $users))
                 ->with(compact('posts', $posts))
                 ->with(compact('tags', $tags));
-        }else{
+        } else {
             return redirect('/');
         }
     }
 
-    public function delete($user_id){
+    public function delete($user_id)
+    {
         $user = User::find($user_id);
-        if(!isset($user)){
+        if (!isset($user)) {
             return redirect('/admin/home-page');
         }
-        if($user->admin){
-            return redirect('/admin/home-page')->with('alert','Cannot delete admin user!');
+        if ($user->admin) {
+            return redirect('/admin/home-page')->with('alert', 'Cannot delete admin user!');
         }
 
         User::find($user_id)->delete();
         return redirect('/admin/home-page');
-
     }
-
 }

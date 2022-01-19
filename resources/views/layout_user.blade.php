@@ -161,7 +161,7 @@
                   <div class="main-menu d-none d-lg-block col-xl-8 col-lg-8">
                     <nav>
                       <ul id="navigation" class="d-flex justify-content-end align-items-center">
-                       
+
                         <!-- <li><a href="#">カテゴリー</a>
                           <ul class="submenu">
                             @foreach ($tags as $tag)
@@ -200,7 +200,7 @@
                                 <img src="{{ asset('/user/img/default_avt.jpg') }}">
                             @endif
                             <ul class="submenu">
-                              
+
                               @if (auth()->user()->admin)
                                 <li><a href="{{ URL::to('admin/home-page') }}">管理ページ</a></li>
                                 @else
@@ -210,9 +210,9 @@
                                   <li>
                                     <a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a>
                                   </li>
-                      
+
                               @endif
-                              
+
                               <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
                             </ul>
                           </li>
@@ -395,7 +395,7 @@
   <script src="{{ asset('/user/js/vendor/modernizr-3.5.0.min.js') }}"></script>
   <!-- Jquery, Popper, Bootstrap -->
   {{-- <script src="{{ asset('/user/js/vendor/jquery-1.12.4.min.js') }}"></script> --}}
-  <script src="{{ asset('/user/js/popper.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   {{-- <script src="{{ asset('/user/js/bootstrap.min.js') }}"></script> --}}
   <!-- Jquery Mobile Menu -->
   <script src="{{ asset('/user/js/jquery.slicknav.min.js') }}"></script>

@@ -9,8 +9,6 @@ use Spatie\Searchable\ModelSearchAspect;
 use App\Post;
 use Illuminate\Support\Facades\DB;
 
-
-
 class SearchController extends Controller
 {
     /**
@@ -51,7 +49,10 @@ class SearchController extends Controller
                     ->join('posts', 'comments.post_id', '=', 'posts.post_id')
                     ->where('posts.post_id', '=', $searchResult->searchable->post_id)
                     ->count();
-                    $like_count[$type][$searchResult->searchable->post_id] = DB::table('user_post_like')->where('post_id', $searchResult->searchable->post_id)->where('like_state', 1)->count();
+                    $like_count[$type][$searchResult->searchable->post_id] = DB::table('user_post_like')
+                        ->where('post_id', $searchResult->searchable->post_id)
+                        ->where('like_state', 1)
+                        ->count();
                 }
             }
         }

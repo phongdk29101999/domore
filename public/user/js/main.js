@@ -19,7 +19,6 @@
         $('#react-btn').fadeOut(500);
       } else {
         $(".header-sticky").addClass("sticky-bar");
-       
         $('#react-btn').fadeIn(500);
       }
     });
@@ -31,9 +30,36 @@
     $('.chose_option').on("click", function () {
       $('.popup_chose').css('display', 'block');
     });
-    $('.click_to_repcmt').on("click", function () {
-      $('.rep_comment').css('display', 'block');
-    });
+    let btn_reply = document.querySelectorAll(".click_to_repcmt");
+    for (let i = 0; i < btn_reply.length; i++) {
+        btn_reply[i].addEventListener("click", function () {
+            let reply_form = document.querySelectorAll(".rep_comment")[i];
+            if (reply_form.style.display == "none")
+            {
+                reply_form.style.display = "block";
+            } else {
+                reply_form.style.display = "none"
+            }
+        })
+    }
+    let btn_edit_comment = document.querySelectorAll(".edit-comment-btn");
+    for (let i = 0; i < btn_edit_comment.length; i++) {
+        btn_edit_comment[i].addEventListener("click", function () {
+            let comment_content = document.querySelectorAll(".comment-content")[i];
+            let edit_comment = document.querySelectorAll(".edit-comment")[i];
+            if (comment_content.style.display == "block") {
+                comment_content.style.display = "none";
+                edit_comment.style.display = "block";
+            } else {
+                comment_content.style.display = "block";
+                edit_comment.style.display = "none";
+            }
+        })
+    }
+    // $('.click_to_repcmt').on("click", function () {
+    // //   $('.rep_comment').css('display', 'block');
+    //     document.querySelector(".rep_comment").style.display = "block";
+    // });
     $('#click_see_fl').on("click", function () {
       $('#follower_u').css('display', 'block');
     });

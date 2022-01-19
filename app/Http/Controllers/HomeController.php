@@ -1,19 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Http\Requests;
 use App\Post;
 use phpDocumentor\Reflection\Types\Compound;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-  }
+}
 class HomeController extends AdminController
 {
     /**
@@ -32,7 +31,8 @@ class HomeController extends AdminController
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function homepage(){
+    public function homepage()
+    {
         $comment_count = array();
         $like_count = array();
         $posts = Post::where("isPublic", "=", true)->get();
