@@ -156,22 +156,27 @@
                      </div>
                   </div>
                   <p class="comment">
-                    {{$comment->content}}
+                    <div class="comment-content" style="display: block;">{{$comment->content}}</div>
+                    <div class="edit-comment" style="display: none;">
+                        <form action="{{URL::to('/comment/edit')}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="comment_id" value="{{$comment->comment_id}}">
+                            <input type="hidden" name="post_id" value="{{$post->post_id}}">
+                            <input class="comment_edit" type="text" class="form-input" name="content" placeholder="コメントを編集する">
+                            <button type="submit" class="button_edit_comment">編集する</button>
+                        </form>
+                    </div>
                   </p>
                  </div>
                 </div>
                 <div class="item_cmt">
 
                 @if (Auth::user()->user_id == $comment->user_id)
-                  <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                  <a class="edit-comment-btn" href="javascript:void(0)" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
                 @endif
                 <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a>
                 <a class="click_to_repcmt" href="javascript:void(0)" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
-
-
-
                 </div>
-
                </div>
                @foreach ($comments_reply as $comment_reply)
                   @if ($comment_reply->reply_of == $comment->comment_id)
@@ -198,11 +203,20 @@
                           </div>
                       </div>
                       <p class="comment">
-                        {{$comment_reply->content}}
+                        <div class="comment-content" style="display: block;">{{$comment_reply->content}}</div>
+                        <div class="edit-comment" style="display: none;">
+                            <form action="{{URL::to('/comment/edit')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="comment_id" value="{{$comment_reply->comment_id}}">
+                                <input type="hidden" name="post_id" value="{{$post->post_id}}">
+                                <input class="comment_edit" type="text" class="form-input" name="content" placeholder="コメントを編集する">
+                                <button type="submit" class="button_edit_comment">編集する</button>
+                            </form>
+                        </div>
                       </p>
                       </div>
                       @if (Auth::user()->user_id == $comment->user_id)
-                      <a href="#" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                      <a class="edit-comment-btn" href="javascript:void(0)" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
                       @endif
                     </div>
                   @endif

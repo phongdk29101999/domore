@@ -12,6 +12,6 @@ class Comment extends Model
     protected $connection = '';
 
     public function post(){
-        return $this->belongsTo('App\Post','post_id');
+        return $this->belongsTo('App\Post', 'post_id');
     }
 }

@@ -16,7 +16,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $posts = Post::where('user_id', $id)->get();      
+        $posts = Post::where('user_id', $id)->get();
         $follows = DB::table('followers')
                     ->join('users', 'followers.follows_id', '=', 'users.user_id')
                     ->where('followers.user_id', '=', $user->user_id)
@@ -27,7 +27,7 @@ class UserController extends Controller
                     ->where('followers.follows_id', '=', $user->user_id)
                     ->where('follow_state', 1)
                     ->get();
-        
+
         $check = 0;
 
         foreach($follows_user as $fl) {
@@ -102,7 +102,7 @@ class UserController extends Controller
                     return redirect("/users/$user->user_id")->with('alert', 'Your password updated!!');
 
                 }else{
-                    return redirect("/users/$user->user_id/edit")->with('alert','Confirm password not match!!');
+                    return redirect("/users/$user->user_id/edit")->with('alert', 'Confirm password not match!!');
                 }
             } else {
                 // Current Password not match ps in db
