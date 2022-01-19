@@ -26,17 +26,17 @@ class Post extends Model implements Searchable
     ];
 
     public function tags(){
-        return $this->belongsToMany('App\Tag','post_tag','post_id','tag_id');
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
     }
 
     public function user(){
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function getSearchResult(): SearchResult
     {
         $url = route('post.show', $this->post_id);
-        // $UserId = DB::table('users')->where('user_id','=', this->user_id);
+        // $UserId = DB::table('users')->where('user_id', '=', this->user_id);
 
         return new SearchResult(
             $this,

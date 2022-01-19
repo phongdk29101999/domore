@@ -25,7 +25,7 @@ class TagController extends Controller
             $tag->tag_title = $request->title;
             $request->validate(['title' => "required|max:30|min:1|unique:tags,tag_title"]);
             $tag->save();
-            return redirect('tags/new')->with(compact('tags', $tags));    
+            return redirect('tags/new')->with(compact('tags', $tags));
         }
         return view('tag.new')->with(compact('tags', $tags));
     }
@@ -34,7 +34,7 @@ class TagController extends Controller
     public function show($tag_id)
     {
         $tag = Tag::find($tag_id);
-        if(!isset($tag)){
+        if (!isset($tag)) {
             return redirect('/');
         }
         $posts = $tag->posts->all();
@@ -44,29 +44,30 @@ class TagController extends Controller
     }
 
     # Edit post
-    public function edit(Request $request,$tag_id){
+    public function edit(Request $request, $tag_id)
+    {
         $tag = Tag::find($tag_id);
-        if(!isset($tag)){
+        if (!isset($tag)) {
             return redirect('/');
         }
         $tags = Tag::all();
         $tags = $tags->SortByDesc('tag_id');
-        if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
             $request->validate(['title' => "required|max:30|min:3|unique:tags,tag_title"]);
             $tag->tag_title = $request->title;
             $tag->save();
             return redirect("tags/$tag->tag_id/edit")
                     ->with(compact('tags', $tags))
-                    ->with(compact('tag',$tag));
+                    ->with(compact('tag', $tag));
         }
-        return view('tag.edit')->with(compact('tag',$tag))->with(compact('tags',$tags));
+        return view('tag.edit')->with(compact('tag', $tag))->with(compact('tags', $tags));
     }
 
     # Delete tag
     public function delete($tag_id)
     {
         $tag = Tag::find($tag_id);
-        if(!isset($tag)){
+        if (!isset($tag)) {
             return redirect('/');
         }
         Tag::where('tag_id', $tag_id)->delete();
