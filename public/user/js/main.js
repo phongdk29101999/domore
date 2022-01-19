@@ -34,12 +34,24 @@
     $('.click_to_repcmt').on("click", function () {
       $('.rep_comment').css('display', 'block');
     });
+    $('#click_see_fl').on("click", function () {
+      $('#follower_u').css('display', 'block');
+    });
+    $('#click_see_fling').on("click", function () {
+      $('#follower_list').css('display', 'block');
+    });
 
     $('.close').on("click", function () {
       $('.popup_modal').css('display', 'none');
     });
     $('.close_chose').on("click", function () {
       $('.popup_chose').css('display', 'none');
+    });
+    $('.close_tab').on("click", function () {
+      $('#follower_u').css('display', 'none');
+    });
+    $('.close_tab_1').on("click", function () {
+      $('#follower_list').css('display', 'none');
     });
     $('.button_rep_comment').on("click", function () {
       $('.rep_comment').css('display', 'none');

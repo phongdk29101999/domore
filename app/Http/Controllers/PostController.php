@@ -31,6 +31,7 @@ class PostController extends Controller
         $comment_count = array();
         $like_count = array();
         $title = "Posts";
+        $user = User::find(auth()->user()->user_id);
         if ($posts->count() !== 0) {
             foreach ($posts as $post) {
                 $comment_count[$post->post_id] = DB::table('comments')
@@ -40,10 +41,21 @@ class PostController extends Controller
                 $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
             }
         }
+        $follows = DB::table('followers')
+                    ->join('users', 'followers.user_id', '=', 'users.user_id')
+                    ->where('followers.user_id', '=', $user->user_id)
+                    ->where('follow_state', 1)
+                    ->get();
+
+        $user_fl = Post::join('followers','posts.user_id', '=', 'followers.follows_id')
+                ->join('users','users.user_id', '=', 'posts.user_id')
+                ->where('followers.user_id', '=', $user->user_id )
+                ->get();
+
         if ($request->ajax()) {
-            return view('post.post_data', compact('posts', 'title', 'comment_count', 'like_count'))->render();
+            return view('post.post_data', compact('posts', 'title', 'comment_count', 'like_count','user_fl'))->render();
         }
-        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count'));
+        return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count','user_fl'));
     }
 
     # Get post by id

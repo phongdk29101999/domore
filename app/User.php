@@ -17,4 +17,7 @@ class User extends Authenticatable // change model to authenticable
     public function posts(){
         return $this->hasMany(Post::class, 'user_id');
     }
+    public function follows(){
+        return $this->hasMany(Follow::class, 'user_id');
+    }
 }

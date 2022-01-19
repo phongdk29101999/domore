@@ -64,7 +64,7 @@ hr {
                               @if (Auth::user())
                                 @if (Auth::user()->admin == 1)
                                   <div class="col-sm-4">
-                                     
+
                                   </div>
                                   @else
                                   <div class="col-sm-4">
@@ -81,7 +81,7 @@ hr {
                         </div>
             </div>
         </div>
-       
+
     </div>
 </section>
 <!-- Courses area start -->
@@ -122,8 +122,8 @@ hr {
           <div class="des">{{$post->description}}</div>
           <a class="date" style="color: #000000;" href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> {{$post->user->user_name}}</a>
         </div>
-        <div class="col-sm-1" >{{$comment_count[$post->post_id]}}</div>
-        <div class="col-sm-1" style="">{{$like_count[$post->post_id]}}</div>
+        <div class="col-sm-1" >{{$post->comment_count}}</div>
+        <div class="col-sm-1" style="">{{$post->like_count}}</div>
         <div class="col-sm-2" style="">{{$post->date_create}}</div>
       </div>
       <hr>

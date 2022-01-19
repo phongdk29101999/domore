@@ -35,27 +35,32 @@ class HomeController extends AdminController
     public function homepage(){
         $comment_count = array();
         $like_count = array();
-        $posts = Post::where("isPublic", "=", true)->orderBy('post_id', 'DESC')->get();
+        $posts = Post::where("isPublic", "=", true)->get();
         if ($posts->count() !== 0) {
-            foreach ($posts as $post) {
-                $comment_count[$post->post_id] = DB::table('comments')
+            for ($i = 0; $i < sizeof($posts); $i ++) {
+                $posts[$i]["comment_count"] = DB::table('comments')
                     ->join('posts', 'comments.post_id', '=', 'posts.post_id')
-                    ->where('posts.post_id', '=', $post->post_id)
+                    ->where('posts.post_id', '=', $posts[$i]->post_id)
                     ->count();
-                $like_count[$post->post_id] = DB::table('user_post_like')->where('post_id', $post->post_id)->where('like_state', 1)->count();
+                $posts[$i]["like_count"] = DB::table('user_post_like')
+                    ->where('post_id', $posts[$i]->post_id)
+                    ->where('like_state', 1)
+                    ->count();
             }
+            $posts = $posts->sortByDesc(function ($post, $key) {
+                return $post->comment_count;
+            });
         }
-        return view('user.home',compact('posts', 'comment_count', 'like_count'));
+        return view('user.home', compact('posts'));
     }
 
     public function index()
     {
-        if(Auth::user() && Auth::user()->admin){
+        if (Auth::user() && Auth::user()->admin) {
             return redirect('/admin/home-page');
-        }
-        else {
-            $posts = Post::orderBy('date_create','desc')->take(3)->get();
-            return view('user.home',compact('posts'));
+        } else {
+            $posts = Post::orderBy('date_create', 'desc')->take(3)->get();
+            return view('user.home', compact('posts'));
         }
     }
 }
