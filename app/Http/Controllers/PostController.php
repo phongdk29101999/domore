@@ -62,6 +62,39 @@ class PostController extends Controller
         }
         return view('post.posts', compact('posts', 'title', 'comment_count', 'like_count', 'user_fl'));
     }
+    function all_post_follow(Request $request)
+    {
+        $posts = Post::where("posts.isPublic", "=", true)->paginate(3);
+        $comment_count = array();
+        $like_count = array();
+        $title = "Posts";
+        $user = User::find(auth()->user()->user_id);
+        if ($posts->count() !== 0) {
+            foreach ($posts as $post) {
+                $comment_count[$post->post_id] = DB::table('comments')
+                    ->join('posts', 'comments.post_id', '=', 'posts.post_id')
+                    ->where('posts.post_id', '=', $post->post_id)
+                    ->count();
+                $like_count[$post->post_id] = DB::table('user_post_like')
+                    ->where('post_id', $post->post_id)
+                    ->where('like_state', 1)
+                    ->count();
+            }
+        }
+
+        $user_fl = Post::join('followers', 'posts.user_id', '=', 'followers.follows_id')
+                ->join('users', 'users.user_id', '=', 'posts.user_id')
+                ->where('followers.user_id', '=', $user->user_id)
+                ->where("posts.isPublic", "=", true)->paginate(3);
+
+        if ($request->ajax()) {
+            return view(
+                'post.follow_post',
+                compact('posts', 'title', 'comment_count', 'like_count', 'user_fl')
+            )->render();
+        }
+        return view('post.posts_follow', compact('posts', 'title', 'comment_count', 'like_count', 'user_fl'));
+    }
 
     # Get post by id
     public function post_detail($post_id)

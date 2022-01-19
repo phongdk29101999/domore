@@ -27,13 +27,13 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8">
                     <div class="section-tittle text-center">
-                        <h2> タグのポスト</h2>
+                        <h2> フォローイングのポスト</h2>
                     </div>
                 </div>
             </div>
 
             <div class="row d-flex flex-column" id="table_data">
-                @include('post.post_data')
+                @include('post.follow_post')
                 <div class="space"></div>
 <div class="space"></div>
 <div class="space"></div>
