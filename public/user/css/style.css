@@ -77,6 +77,21 @@
     font-weight: 600;
     font-size: 19px;
 }
+.btn_1_2 {
+    background-color: gray;
+    color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 30px;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 19px;
+}
 .item_post {
 
 }
@@ -6045,6 +6060,21 @@ ul.submenu {
     -webkit-backdrop-filter: unset;
     position: absolute;
     top: 30%;
+    left: 80%;
+    width: 480px;
+    padding: 45px;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 20px rgb(0 0 0 / 20%);
+    border-radius: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.popup_follower {
+    -webkit-backdrop-filter: unset;
+    position: absolute;
+    top: 35%;
     left: 80%;
     width: 480px;
     padding: 45px;

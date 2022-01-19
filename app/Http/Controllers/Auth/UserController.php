@@ -6,6 +6,9 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
+use App\Follow;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -13,10 +16,53 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $posts = Post::where('user_id', $id)->get();
-        return view('user.user_profile')->with(compact(['posts', $posts], ['user', $user]));
+        $posts = Post::where('user_id', $id)->get();      
+        $follows = DB::table('followers')
+                    ->join('users', 'followers.follows_id', '=', 'users.user_id')
+                    ->where('followers.user_id', '=', $user->user_id)
+                    ->where('follow_state', 1)
+                    ->get();
+        $follows_user = DB::table('followers')
+                    ->join('users', 'followers.user_id', '=', 'users.user_id')
+                    ->where('followers.follows_id', '=', $user->user_id)
+                    ->where('follow_state', 1)
+                    ->get();
+        
+        $check = 0;
+
+        foreach($follows_user as $fl) {
+            if( $fl->user_id == auth()->user()->user_id);
+            $check = 1;
+        }
+
+        return view('user.user_profile')->with(compact(['posts', $posts], ['user', $user], ['follows', $follows], ['follows_user', $follows_user],['check', $check]));
     }
 
+    public function follow(Request $request)
+    {
+        $follow_id = $request->follow_id;
+        $user_id = auth()->user()->user_id;
+        $current_state = DB::table('followers')->where('user_id', $user_id)->where('follows_id', $follow_id)->select('follow_state')->first();
+        if (!$current_state) {
+            Follow::create([
+                'user_id' => $user_id,
+                'follows_id' => $follow_id,
+                'follow_state' => 1
+            ]);
+        } else if ($current_state->follow_state == 0) {
+            DB::table('followers')->where('user_id', $user_id)->where('follows_id', $follow_id)->update(['follow_state' => 1]);
+        } else {
+            DB::table('followers')->where('user_id', $user_id)->where('follows_id', $follow_id)->update(['follow_state' => 0]);
+        }
+
+        $count_follow = DB::table('followers')->where('follows_id', $follow_id)->where('follow_state', 1)->count();
+
+        if ($request->ajax()) {
+            return $count_follow;
+        }
+
+        return redirect('/user/' . $follow_id);
+    }
     public function edit($id)
     {
         $user = User::find($id);

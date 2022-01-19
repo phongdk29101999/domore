@@ -104,7 +104,7 @@ hr {
 </div>
 <div class="hr"style="border: 2px solid #ccc;"></div>
 <div class="">
-    @foreach($posts as $post)
+    @foreach( $user_fl as $post)
     <div class="content row">
         <div class="col-sm-8" style="">
             <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>

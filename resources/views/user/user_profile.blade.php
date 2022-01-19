@@ -53,6 +53,72 @@
                                     <div id="user-profile-3" class="user-profile row">
                                         <div class="col-sm-offset-1 col-sm-10">
                                             <div class="space"></div>
+                                        @if(count($follows_user) != 0)
+                                            <div class="popup_follower" style="display:none" id="follower_u">
+                                                <a href="#" style="margin-left: 10px;" class="close_tab"><img src="{{asset('/user/img/hero/muiten.png')}}"></a>
+                                                <a href="#"  class="title" style="margin-left: 60px;">フォロワー</a>
+                                                <div style="display: flex; justify-content: space-between; margin-top:15px;  border-top: 1px solid #000;"> </div>
+                                                @foreach($follows_user as $user_fl)
+                                                    <a href = "{{ URL::to('users/' . $user_fl->user_id) }}" class="user justify-content-between d-flex" style="margin-top: 20px;">
+                                                        <div class="thumb">
+                                                            @if($user_fl->avatar_url == null)
+                                                            <div class="cmt-ava">
+                                                                <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                                            </div>
+                                                            @else
+                                                            <div class="cmt-ava">
+                                                                <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="desc" style="margin:20px;">
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="d-flex align-items-center " style="flex-direction: column;line-height: 10px;">
+                                                                    <p href="#" style="font-size: 19px; margin-right: 200px; line-height: 10px;" for="vehicle1">{{ $user_fl->user_name }}</p>
+                                                                    <p href="#" style="font-size: 14px; margin-right: 200px;line-height: 10px; " for="vehicle1">{{ $user_fl->first_name }}</p>
+                                                                    <p href="#" style="font-size: 14px; margin-right: 200px;line-height: 10px;" for="vehicle1">{{ $user_fl->last_name }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                @endforeach
+                                        </div>
+                                        @endif
+                                        @if(count($follows) != 0 )
+                                            <div class="popup_follower" style="display:none" id="follower_list">
+                                           
+                                                <a href="#" style="margin-left: 10px;" class="close_tab_1"><img src="{{asset('/user/img/hero/muiten.png')}}"></a>
+                                                <a href="#"  class="title" style="margin-left: 60px;">フォロワー</a>
+                                                <div style="display: flex; justify-content: space-between; margin-top:15px;  border-top: 1px solid #000;"> </div>
+                                                
+                                                    @foreach($follows as $user_fl)
+                                                    
+                                                        <a href = "{{ URL::to('users/' . $user_fl->follows_id) }}" class="user justify-content-between d-flex" style="margin-top: 20px;">
+                                                            <div class="thumb">
+                                                                @if($user_fl->avatar_url == null)
+                                                                <div class="cmt-ava">
+                                                                    <img src="{{asset('/user/img/default_avt.jpg')}}">
+                                                                </div>
+                                                                @else
+                                                                <div class="cmt-ava">
+                                                                    <img src="{{URL::to('/storage/avatar_url/'.$user_fl->follows_id->avatar_url)}}" alt="author avatar">
+                                                                </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="desc" style="margin:20px;">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center " style="flex-direction: column;line-height: 10px;">
+                                                                        <p href="#" style="font-size: 19px; margin-right: 200px; line-height: 10px;" for="vehicle1">{{ $user_fl->user_name }}</p>
+                                                                        <p href="#" style="font-size: 14px; margin-right: 200px;line-height: 10px; " for="vehicle1">{{ $user_fl->first_name }}</p>
+                                                                        <p href="#" style="font-size: 14px; margin-right: 200px;line-height: 10px;" for="vehicle1">{{ $user_fl->last_name }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    @endforeach
+                                            
+                                            </div>
+                                        @endif
                                             <form class="form-horizontal">
                                                 <div class="tabbable">
                                                     <div class="tab-content profile-edit-tab-content rounded" style="background-color: rgb(220 220 220);box-shadow: 10px 10px 5px #c5c9c9;">
@@ -140,19 +206,21 @@
                                                                         <a href="{{ URL::to('users/' .$user->user_id . '/posts') }}"
                                                                             class="col-sm-4 control-label no-padding-right"
                                                                             for="form-field-lastname" style="font-weight: bold;"> {{count($posts)}}ポスト</a>
-                                                                        <label
+                                                                        <label id="click_see_fl"
                                                                             class="col-sm-4 control-label no-padding-right"
-                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;">15 フォロワー</label>
+                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;"><span class="count-fl">{{count( $follows_user)}}</span>フォロワー</label>
 
-                                                                        <label
+                                                                        <label id="click_see_fling"
                                                                             class="col-sm-2 control-label no-padding-right"
-                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;">5 フォロイング</label>
-
-
+                                                                            for="form-field-lastname" style="font-weight: bold;text-align: left;left: 20%;"><span>{{count( $follows)}}</span> フォロイング</label>
                                                                     </div>
-
-
-
+                                                                    @if (Auth::user()->user_id != $user->user_id)
+                                                                        @if( $check == 0)
+                                                                            <button type="submit" class=" btn_1_2 fl-ajax" follow-id={{ $user->user_id }}>フォロー</button>
+                                                                            @else
+                                                                            <button type="submit" class=" btn_1_2 fl-ajax btn-followed" follow-id={{ $user->user_id }}>フォローをやめる</button>
+                                                                        @endif
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -169,5 +237,31 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+                $(document).on('click', '.fl-ajax', function(event) {
+                  event.preventDefault();
+                  var follow_id = $(this).attr('follow-id');
+                  fetch_data(follow_id);
+                });
 
+                function fetch_data(follow_id) {
+                  $(".fl-ajax").toggleClass("btn-followed");
+
+                  if($('.fl-ajax').hasClass('btn-followed')) {
+                    $('.fl-ajax').html('フォローをやめる');
+                  } else {
+                    $('.fl-ajax').html('フォロー');
+                  }
+                  
+                  $.ajax({
+                    url: follow_id + "/follow",
+                    success: function(data) {
+                        console.log(data);
+                      $('.count-fl').html(data);
+                    }
+                  });
+                }
+              });
+    </script>
 @endsection
