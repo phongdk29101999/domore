@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 /*Blog*/
 Route::get('/posts', 'PostController@all_post');
+Route::get('/posts_follow', 'PostController@all_post_follow');
 Route::get('/posts/{post_id}', 'PostController@post_detail')->name('post.show');
 Route::match(['GET', 'POST'], '/posts/{post_id}/comment', 'PostController@add_comment')->name('post.comment');
 Route::post('/comment/edit', 'PostController@editComment');
