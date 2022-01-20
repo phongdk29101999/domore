@@ -78,50 +78,7 @@
       </div>
     </div>
   </div>
-  <div class="popup_modal" style="display:none">
-    <a href="#"  class="title">通知</a>
-    <h2 class="close">X</h2>
-    <div class="button">
-      <button class="btn_ntc" style="margin-right: 10px;">全て</button>
-      <button class="btn_ntc">未読</button>
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-top:15px">
-      <a href="#" class="title">前</a>
-      <a href="#" class="text">もっと見る</a>
-    </div>
-    <div class="user justify-content-between d-flex">
-      <div class="thumb">
-        <div class="notice-ava">
-          <img src="{{asset('/user/img/default_avt.jpg')}}">
-        </div>
-      </div>
-      <div class="desc" style="margin:20px;">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-            <h5>
-              <a href="#" style="font-size: 21px;">Trangさんがあなたのポストにコメントしました。</a>
-            </h5>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="user justify-content-between d-flex">
-      <div class="thumb">
-        <div class="notice-ava">
-          <img src="{{asset('/user/img/default_avt.jpg')}}">
-        </div>
-      </div>
-      <div class="desc" style="margin:20px;">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-            <h5>
-              <a href="#" style="font-size: 21px;">Trangさんがあなたのポストにコメントしました。</a>
-            </h5>
-            </div>
-        </div>
-      </div>
-    </div>
-</div>
+ 
   <!-- Preloader Start -->
   <header>
     <!-- Header Start -->
@@ -180,13 +137,10 @@
                             <li class="active"><a
                               href="{{ URL::to('/home-page') }}">ホーム</a></li>
                             <!-- <li><a href="{{ URL::to('/posts') }}">ポスト</a></li> -->
-                            <li><a href="{{ URL::to('/posts') }}">フォロイング</a></li>
+                            <li><a href="{{ URL::to('/posts_follow') }}">フォロイング</a></li>
                             <li><a href="{{ URL::to('create_post') }}">作成</a></li>
                             <li>
                               <a href="{{ URL::to('users/' . Auth::user()->user_id) }}">こんにちは、{{ Auth::user()->user_name }}さん !!</a>
-                            </li>
-                            <li>
-                            <a href="#" class="notice" ><img style="width: 80%;" src="{{ asset('/user/img/hero/notice.png') }}"></a>
                             </li>
                           @endif
                         @endif

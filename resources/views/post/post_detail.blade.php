@@ -174,7 +174,7 @@
                 @if (Auth::user()->user_id == $comment->user_id)
                   <a class="edit-comment-btn" href="javascript:void(0)" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
                 @endif
-                <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a>
+                {{-- <a href="#" style="margin-bottom: 13px;"><img src="{{asset('/user/img/hero/like_cmt.png')}}" alt="" ></a> --}}
                 <a class="click_to_repcmt" href="javascript:void(0)" style="margin-bottom: 13px; display: flex; margin-left: -27px;"> <p>返事</p><img src="{{asset('/user/img/hero/rep_cmt.png')}}" alt="" ></a>
                 </div>
                </div>
@@ -203,8 +203,8 @@
                           </div>
                       </div>
                       <p class="comment">
-                        <div class="comment-content" style="display: block;">{{$comment_reply->content}}</div>
-                        <div class="edit-comment" style="display: none;">
+                        <div class="comment-content-reply" style="display: block;">{{$comment_reply->content}}</div>
+                        <div class="edit-comment-reply" style="display: none;">
                             <form action="{{URL::to('/comment/edit')}}" method="post">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="comment_id" value="{{$comment_reply->comment_id}}">
@@ -215,8 +215,8 @@
                         </div>
                       </p>
                       </div>
-                      @if (Auth::user()->user_id == $comment->user_id)
-                      <a class="edit-comment-btn" href="javascript:void(0)" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
+                      @if (Auth::user()->user_id == $comment_reply->user_id)
+                        <a class="edit-comment-reply-btn" href="javascript:void(0)" style="margin-bottom: 13px; margin-left: 20px;"><img src="{{asset('/user/img/hero/edit_cmt.png')}}" alt="" ></a>
                       @endif
                     </div>
                   @endif
@@ -235,7 +235,7 @@
 
             </div>
             @endforeach
-            <p>{{$comments->links()}}</p>
+            {{-- <p>{{$comments->links()}}</p> --}}
           </div>
 
           <div class="navigation-top">

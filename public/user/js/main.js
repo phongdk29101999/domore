@@ -45,8 +45,24 @@
     let btn_edit_comment = document.querySelectorAll(".edit-comment-btn");
     for (let i = 0; i < btn_edit_comment.length; i++) {
         btn_edit_comment[i].addEventListener("click", function () {
-            let comment_content = document.querySelectorAll(".comment-content")[i];
-            let edit_comment = document.querySelectorAll(".edit-comment")[i];
+            // console.log(btn_edit_comment[i].parentElement.parentElement.querySelectorAll(".edit-comment"));
+            let comment_content = btn_edit_comment[i].parentElement.parentElement.querySelector(".comment-content");
+            let edit_comment = btn_edit_comment[i].parentElement.parentElement.querySelector(".edit-comment");
+            if (comment_content.style.display == "block") {
+                comment_content.style.display = "none";
+                edit_comment.style.display = "block";
+            } else {
+                comment_content.style.display = "block";
+                edit_comment.style.display = "none";
+            }
+        })
+    }
+    let btn_edit_comment_reply = document.querySelectorAll(".edit-comment-reply-btn");
+    for (let i = 0; i < btn_edit_comment_reply.length; i++) {
+        btn_edit_comment_reply[i].addEventListener("click", function () {
+            // console.log(btn_edit_comment[i].parentElement.parentElement.querySelectorAll(".edit-comment"));
+            let comment_content = btn_edit_comment_reply[i].parentElement.querySelector(".comment-content-reply");
+            let edit_comment = btn_edit_comment_reply   [i].parentElement.querySelector(".edit-comment-reply");
             if (comment_content.style.display == "block") {
                 comment_content.style.display = "none";
                 edit_comment.style.display = "block";
