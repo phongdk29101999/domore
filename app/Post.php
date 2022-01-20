@@ -25,11 +25,13 @@ class Post extends Model implements Searchable
         "isPublic"
     ];
 
-    public function tags(){
+    public function tags()
+    {
         return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User', 'user_id');
     }
 
