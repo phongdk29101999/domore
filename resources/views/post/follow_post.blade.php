@@ -66,17 +66,17 @@ hr {
 <div class="hr"style="border: 2px solid #ccc;"></div>
 <div class="">
     @foreach( $user_fl as $post)
-    <div class="content row">
-        <div class="col-sm-8" style="">
-            <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>
-            <div class="des">{{$post->description}}</div>
-            <a class="date" style="color: #000000;" href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> {{$post->user->user_name}}</a>
+        <div class="content row">
+            <div class="col-sm-8" style="">
+                <a href="{{URL::to('/posts/'.$post->post_id)}}" class="title" style="font-weight: bold;color: black;">{{$post->title}}</a>
+                <div class="des">{{$post->description}}</div>
+                <a class="date" style="color: #000000;" href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> {{$post->user->user_name}}</a>
+            </div>
+            <div class="col-sm-1">{{$comment_count[$post->post_id]}}</div>
+            <div class="col-sm-1">{{$like_count[$post->post_id]}}</div>
+            <div class="col-sm-2">{{$post["date_create"]}}</div>
         </div>
-        <div class="col-sm-1" >{{$comment_count[$post->post_id]}}</div>
-        <div class="col-sm-1" style="">{{$like_count[$post->post_id]}}</div>
-        <div class="col-sm-2" style="">{{$post->date_create}}</div>
-    </div>
-    <hr>
+        <hr>
     @endforeach
 </div>
 
@@ -99,4 +99,3 @@ window.onclick = function(e) {
 }
 </script>
 
-{!! $posts->links() !!}
