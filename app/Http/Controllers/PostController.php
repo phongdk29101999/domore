@@ -26,7 +26,7 @@ class PostController extends Controller
     # Get all post
     function all_post(Request $request)
     {
-        $posts = Post::where("posts.isPublic", "=", true)->paginate(3);
+        $posts = Post::where("posts.isPublic", "=", true)->get();
         $comment_count = array();
         $like_count = array();
         $title = "Posts";
@@ -121,7 +121,7 @@ class PostController extends Controller
                 'users.last_name'
             ])
             ->orderBy('comments.comment_id', 'asc')
-            ->paginate(5);
+            ->get();
         $comments_reply = DB::table('comments')
         ->join('posts', 'comments.post_id', '=', 'posts.post_id')
         ->join('users', 'comments.user_id', '=', 'users.user_id')
@@ -132,7 +132,7 @@ class PostController extends Controller
             'comments.reply_of', 'users.user_name', 'users.avatar_url',
             'users.first_name', 'users.last_name'
         ])
-        ->paginate(5);
+        ->get();
 
         $current_user = User::find(auth()->user()->user_id);
         $search_user_post = DB::table('user_post_like')
@@ -186,7 +186,7 @@ class PostController extends Controller
     {
         $posts = Post::whereHas('tags', function ($query) use ($tag_id) {
             $query->where('tags.tag_id', $tag_id);
-        })->paginate(3);
+        })->get();
         $comment_count = array();
         $like_count = array();
         if ($posts->count() !== 0) {
@@ -413,7 +413,7 @@ class PostController extends Controller
     public function get_my_posts(Request $request)
     {
         $current_user = User::find(auth()->user()->user_id);
-        $posts = Post::where('user_id', $current_user->user_id)->paginate(3);
+        $posts = Post::where('user_id', $current_user->user_id)->get();
         $title = "My posts";
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();

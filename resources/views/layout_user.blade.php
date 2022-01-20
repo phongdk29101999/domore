@@ -142,9 +142,6 @@
                             <li>
                               <a href="{{ URL::to('users/' . Auth::user()->user_id) }}">こんにちは、{{ Auth::user()->user_name }}さん !!</a>
                             </li>
-                            <li>
-                            <a href="#" class="notice" ><img style="width: 80%;" src="{{ asset('/user/img/hero/notice.png') }}"></a>
-                            </li>
                           @endif
                         @endif
 
