@@ -5,7 +5,7 @@
         <div class="slider-active">
             <!-- Single Slider -->
             <div class="single-slider slider-height2">
-                <div class="container">
+                {{-- <div class="container">
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
