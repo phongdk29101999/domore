@@ -138,4 +138,3 @@ window.onclick = function(e) {
 }
 </script>
 
-{!! $posts->links() !!}
